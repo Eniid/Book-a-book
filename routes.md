@@ -5,7 +5,7 @@ Note : Les numéro des vues correspondent à des plache sur le fichier XD
 Lien : {siteweb}/ 
 Méthode : GET
 VUES : 
-- If Mr Spirler > XD 1, 2, 3 
+- If Mr Spirler > XD 1 
 - else 
     If pas de commande > XD 7, 8, 9
     Esle if brouillon > xD 10
@@ -48,6 +48,20 @@ Vue : 16
 Lien : {siteweb}/profil
 Méthode : GET
 Vue : 12
+
+
+
+## Users list
+Lien : {siteweb}/etudients
+Méthode : GET
+VUE : xD 2
+
+
+## Book list
+Lien : {siteweb}/livres
+Méthode : GET
+VUE : xD 3
+
 
 ## User 
 Lien : {siteweb}/etudiant_{slug}
