@@ -1,5 +1,7 @@
 # Book-a-book
 
+## Consignes 
+
 Chaque année, au début de l’année, monsieur Spirlet propose aux étudiants d’acheter à un prix avantageux les livres obligatoires du cursus en infographie.
 
 À l’heure qu’il est sa gestion du processus passe par l’utilisation d’une feuille Excel destinée à synthétiser les statuts des commandes et une impression d’un bon de commande à remplir par les étudiants.
@@ -64,5 +66,4 @@ Chaque changement de statut doit être associé à un timestamp et ce dernier do
 
 
 ## Prototype 
-
-https://xd.adobe.com/view/3442e944-81c5-42b5-a2d9-f7689efea68f-6111/
+https://xd.adobe.com/view/3442e944-81c5-42b5-a2d9-f7689efea68f-6111/ (Fichier XD à télécharher dans le Ripo <3)
