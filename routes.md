@@ -2,42 +2,34 @@
 Note : Les numéro des vues correspondent à des plache sur le fichier XD 
 
 ## Dashbord 
-Lien : {siteweb}/ 
-
-Méthode : GET
-
-VUES : 
-
-- If Mr Spirler > XD 1 
-- else 
-    If pas de commande > XD 7, 8, 9
-    Esle if brouillon > xD 10
-    Else > xD 11
-
-
+- Lien : {siteweb}/ 
+- Méthode : GET
+- VUES : 
+  - If Mr Spirler > XD 1 
+  - else 
+      If pas de commande > XD 7, 8, 9
+      Esle if brouillon > xD 10
+      Else > xD 11
 
 
 
 __Form__
 
-changement de statu d'un livre pour de la part de Mr Spirlet sur la vue 1
+Changement de statu d'un livre pour de la part de Mr Spirlet sur la vue 1
 
-Lien : {siteweb}/
-
-Méthode : POST
+* Lien : {siteweb}/
+* Méthode : POST
 
 
 
 
 
 ## Connecion
-Lien : {siteweb}/connecion
+* Lien : {siteweb}/connecion
 
-Méthode : GET
+* Méthode : GET
 
-Vue : 13
-
-
+* Vue : 13
 
 
 
@@ -45,22 +37,20 @@ __Form__
 
 Formulaire de connecion
 
-Lien : {siteweb}/
+* Lien : {siteweb}/
 
-Méthode : POST
+* Méthode : POST
 
 
 
 
 
 ## Inscription 
-Lien : {siteweb}/inscription
+* Lien : {siteweb}/inscription
 
-Méthode : GET
+* Méthode : GET
 
-Vue : 15
-
-
+* Vue : 15
 
 
 
@@ -68,92 +58,82 @@ __Form__
 
 formulaire d'inscription
 
-Lien : {siteweb}/confirmation
+* Lien : {siteweb}/confirmation
 
-Méthode : POST
+* Méthode : POST
 
 
 
 
 
 ## Confirmation  
-Lien : {siteweb}/confirmation
+* Lien : {siteweb}/confirmation
 
-Méthode : GET
+* Méthode : GET
 
-Vue : 16
+* Vue : 16
 
 
 
 
 ## Edit Profil 
-Lien : {siteweb}/profil
+* Lien : {siteweb}/profil
 
-Méthode : GET
+* Méthode : GET
 
-Vue : 12
+* Vue : 12
 
 
 
 
 ## Users list
-Lien : {siteweb}/etudients
-
-Méthode : GET
-
-VUE : xD 2
+* Lien : {siteweb}/etudients
+* Méthode : GET
+* VUE : xD 2
 
 
 
 
 ## Book list
-Lien : {siteweb}/livres
-
-Méthode : GET
-
-VUE : xD 3
+* Lien : {siteweb}/livres
+* Méthode : GET
+* VUE : xD 3
 
 
 
 
 ## User 
-Lien : {siteweb}/etudiant_{slug}
-
-Méthode : GET
-
-Vue : 4
-
+* Lien : {siteweb}/etudiant_{slug}
+* Méthode : GET
+* Vue : 4
 
 
 
 __Form__
 changement de statu d'un livre pour de la part de Mr Spirlet
 
-Lien : {siteweb}/etudiant_{slug}
-
-Méthode : POST
+* Lien : {siteweb}/etudiant_{slug}
+* Méthode : POST
 
 
 
 
 
 ## Book 
-Lien : {siteweb}/livre_{slug}
-
-Méthode : GET
-
-Vue : 5
+* Lien : {siteweb}/livre_{slug}
+* Méthode : GET
+* Vue : 5
 
 
 
 
 
 ## Book Edit
-Lien : {siteweb}/livre_{slud}/edit
+* Lien : {siteweb}/livre_{slud}/edit
 
-Méthode : GET
+* Méthode : GET
 
-Vue : 6
+* Vue : 6
 
 
 
@@ -161,19 +141,18 @@ Vue : 6
 __Form__
 formulaire de modification d'un livre
 
-Lien : {siteweb}/livre_{slug}
+* Lien : {siteweb}/livre_{slug}
 
-Méthode : POST 
+* Méthode : POST 
 
 
 
 
 ## New book
-Lien : {siteweb}/nouveau
+* Lien : {siteweb}/nouveau
 
-Méthode : GET
-
-Vue : 6
+* Méthode : GET
+* Vue : 6
 
 
 
@@ -181,9 +160,9 @@ Vue : 6
 __Form__
 formulaire d'ajout d'un livre
 
-Lien : {siteweb}/livre_{slug}
+* Lien : {siteweb}/livre_{slug}
 
-Méthode : POST
+* Méthode : POST
 
 
 
