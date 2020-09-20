@@ -42,15 +42,15 @@ Chaque changement de statut doit être associé à un timestamp et ce dernier do
 
 ## Pages 
 ### Pour l'admin 
-- *_Vue d'ensemble des commandes_* -> Livres et liste des commandes avec leur statu éditable [Fiche livre][Fiche dudtant][Profil][Deconexion]
-- *_Vue d'ensemble des étudiants_* -> Liste des étudiant et idication sur comande en cours de la part de cette étudiant [Fiche dudtant][Profil][Deconexion]
-- *_Vue d'ensemble des livres_*  -> Liste des livres [Fiche livre][Profil][Deconexion]
+- *__Vue d'ensemble des commandes__* -> Livres et liste des commandes avec leur statu éditable [Fiche livre][Fiche dudtant][Profil][Deconexion]
+- *__Vue d'ensemble des étudiants__* -> Liste des étudiant et idication sur comande en cours de la part de cette étudiant [Fiche dudtant][Profil][Deconexion]
+- *__Vue d'ensemble des livres__*  -> Liste des livres [Fiche livre][Profil][Deconexion]
 - Fiche d'un étudiant -> Avec historique des livres acheter par celui-ci [Fiche livre][Profil][Deconexion]
 - Fiche d'un livre -> Toute les infos sur un livre et l'historique de ses commande + gestion des stoques [Editer livre][Fiche étudiant][Profil][Deconexion]
 - Edit d'un livre -> Editions des informations sur le livre [Retour fiche livre][Profil][Deconexion]
 - Edit du profil -> Edition des information du compte 
 
-* Les pages en gras sont celles qui sont dans le menu, entre chrochet sont les liens des différents pasges
+Les pages en gras sont celles qui sont dans le menu, entre chrochet sont les liens des différents pasges
 
 ### Pour l'étudiant 
 - Commende -> Page ou l'utilisateur fait sa comande [Commande brouillon][Commande validée][Profil][Deconexion]
@@ -58,7 +58,7 @@ Chaque changement de statut doit être associé à un timestamp et ce dernier do
 - Commande validé -> Page ou l'étudiant voit le statu de ses commandes, il ne peux plus revenir en arriére [Profil][Deconexion]
 - Edit du profil -> Edition des information du compte 
 
-* Entre chrochet sont les liens des différents pasges
+Entre chrochet sont les liens des différents pasges
 
 ### Connexion 
 - Connexion -> Connection 
