@@ -1,0 +1,8 @@
+//* Import de polices
+// Helvetica Neue
+@font-face { 	font-family: "hn"; 	src: url('/font/hn.ttf'); } 
+@font-face { 	font-family: "hnb"; 	src: url('/font/hnbold.ttf'); } 
+
+//* Les polices
+$main_font : hn, Helvetica, Arial, sans-serif; 
+$b_font : hnb, Helvetica, Arial, sans-serif; 

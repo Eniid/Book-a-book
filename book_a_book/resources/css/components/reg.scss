@@ -1,0 +1,47 @@
+.register_contener {
+    display: flex;
+    height: 100vh;
+    text-align: center;
+    input {
+        padding:.5rem 1rem;
+        margin: .7rem 0 1.2rem 0;
+    }
+}
+
+.login {
+    background-color: $maine;
+    color: $w;
+    padding: 2rem;
+    width: 50%;
+    input {
+        background-color: $maine !important;
+
+    }
+}
+
+.login:hover{
+    //width: 53%;
+    transition: cubic-bezier(.17,.67,.83,.67);
+}
+
+
+.register {
+    padding: 2rem;
+    margin: auto;
+}
+
+.register:hover{
+    //width: 53%;
+    transition: cubic-bezier(.17,.67,.83,.67);
+}
+
+.reg_title {
+    width: 60%;
+    max-width: 200px;
+}
+
+.desc {
+    max-width: 300px;
+    margin: 3rem auto;
+}
+
