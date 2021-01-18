@@ -15,4 +15,5 @@ class StudentsController extends Controller
         return view('admin.students', compact('students'));
     }
 
+    
 }

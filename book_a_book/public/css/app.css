@@ -1,15 +1,121 @@
-@font-face {
-  font-family: "hn";
-  src: url("/font/hn.ttf");
+.student-order-contener {
+  display: flex;
+  overflow-x: scroll;
+  width: 100%;
 }
-@font-face {
-  font-family: "hnb";
-  src: url("/font/hnbold.ttf");
+.student-order-contener div {
+  margin: 0.4rem 0.5rem;
 }
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
+.student-order-contener img {
+  height: 7.5rem;
+}
+
+.students_contener {
+  width: 350px;
+  position: relative;
+}
+.students_contener .hcta {
+  background-color: #aa0202;
+  color: #fff;
+  border: none;
+}
+.students_contener .book_component_link {
+  left: 8.5rem;
+}
+
+.student_finished_order {
+  color: #aa0202;
+}
+
+@media screen and (min-width: 900px) {
+  .nav_control {
+    position: absolute !important;
+    border: 0 !important;
+    height: 1px !important;
+    width: 1px !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+  }
+}
+@media screen and (max-width: 900px) {
+  body h1 {
+    text-align: left;
+    padding: 2rem 1rem;
+    margin: 2.5rem 0 0rem 0;
+  }
+
+  header.aside {
+    position: relative;
+    top: -3rem;
+    right: 0;
+    height: 15rem;
+    width: auto;
+  }
+
+  main.main {
+    margin-left: 0;
+    padding: 2rem 3rem;
+  }
+
+  .mobile {
+    position: fixed;
+    right: -20rem;
+    top: 0;
+    height: 100vh;
+    width: 20rem;
+    background-color: #262f31;
+    z-index: 100000;
+    transition: 0.7s;
+    box-shadow: 1px 1px 20px 0px #00000038;
+  }
+
+  img.pp {
+    position: absolute;
+    top: 12rem;
+    right: calc(50vw - 50px);
+    margin: auto;
+  }
+
+  .nav_control {
+    position: absolute;
+    top: 2rem;
+    right: 1rem;
+    z-index: 10000000000;
+  }
+
+  .close_nav img {
+    width: 0;
+  }
+
+  .open_nav {
+    width: auto;
+  }
+
+  input:checked ~ .nav_control .open_nav {
+    display: inline;
+  }
+  input:checked ~ .nav_control .open_nav img {
+    width: 0;
+  }
+
+  input:checked ~ .nav_control .close_nav {
+    display: inline;
+  }
+  input:checked ~ .nav_control .close_nav img {
+    width: auto;
+  }
+
+  input:checked ~ .mobile {
+    right: 0rem;
+  }
+}
+@media screen and (max-width: 400px) {
+  main.main {
+    margin-left: 0;
+    padding: 2rem 1rem;
+  }
+}
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -96,6 +202,16 @@ a {
   color: #fff;
 }
 
+.visually-hidden {
+  position: absolute !important;
+  border: 0 !important;
+  height: 1px !important;
+  width: 1px !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+}
+
 .profil {
   text-align: center;
 }
@@ -119,6 +235,7 @@ nav li {
   font-family: hnb, Helvetica, Arial, sans-serif;
   padding: 0.7rem 0;
 }
+
 nav li a {
   text-decoration: none;
   letter-spacing: 0.05rem;
@@ -162,6 +279,7 @@ nav li a {
   border-radius: 6rem;
   border: none;
 }
+
 .add img {
   width: 1rem;
   height: 1rem;
@@ -170,6 +288,10 @@ nav li a {
 .add:hover {
   transform: scale(1.05);
   transition: cubic-bezier(0.17, 0.67, 0.83, 0.67);
+}
+
+.add_book_button {
+  padding: 1.5rem;
 }
 
 .cta {
@@ -243,6 +365,21 @@ nav li a {
   top: 0.7rem;
 }
 
+.edit_black {
+  height: 1rem;
+  position: relative;
+  right: 1rem;
+  z-index: -1000;
+}
+
+.deco {
+  background: #00000000;
+  border: none;
+  color: #fff;
+  padding: 0.5rem;
+  text-decoration: underline;
+}
+
 .search_bar_contener {
   text-align: right;
   width: 115%;
@@ -254,6 +391,20 @@ nav li a {
   border: black solid 1px;
   border-radius: 4px;
   width: 220px;
+}
+
+.edit_book_title {
+  font-size: 2rem;
+  padding: 1rem 0 0.7rem 0;
+  border: none;
+  border-bottom: #F7F7F7 solid 2px;
+  outline: none;
+  background-color: #aaaaaa00;
+  margin-bottom: 1rem;
+}
+
+.edit_book_title:focus {
+  border-bottom: #aa0202 solid 2px;
 }
 
 .aside {
@@ -340,6 +491,7 @@ nav {
   height: 100vh;
   text-align: center;
 }
+
 .register_contener input {
   padding: 0.5rem 1rem;
   margin: 0.7rem 0 1.2rem 0;
@@ -351,6 +503,7 @@ nav {
   padding: 2rem;
   width: 50%;
 }
+
 .login input {
   background-color: #262F31 !important;
 }
@@ -403,6 +556,7 @@ nav {
   text-align: center;
   margin: 0.2rem 0 1rem 0;
 }
+
 .students_user_name_contener p {
   color: grey;
 }
@@ -428,4 +582,72 @@ nav {
 .student_no_order {
   color: grey;
   padding: 0.2rem 0;
+}
+
+.book_edit {
+  margin: 5rem auto;
+}
+
+.book_from_contener {
+  display: flex;
+}
+
+.cover_edit {
+  display: block;
+  font-size: 0;
+  padding: 110px 70px;
+  opacity: 0;
+  position: relative;
+  top: -220px;
+}
+
+.main_form {
+  background-color: #fff;
+  padding: 4rem;
+  width: 60%;
+  max-width: 1025px;
+  display: flex;
+  justify-content: space-around;
+  box-shadow: 0px 2px 6px 0px #c2c2c2;
+}
+
+.main_form input {
+  border: none;
+  border-bottom: #F7F7F7 solid 2px;
+  outline: none;
+  padding: 0.5rem 1rem;
+  margin: 0.7rem 0 1.2rem 0;
+  display: block;
+  margin-right: 2rem;
+}
+
+.main_form input:focus {
+  border-bottom: #aa0202 solid 2px;
+}
+
+.edit_pic {
+  width: 1rem;
+  position: absolute;
+  top: 6rem;
+  right: 3.5rem;
+  z-index: 10000000000;
+  background-color: #f7f7f79e;
+  padding: 1rem;
+  border-radius: 4rem;
+}
+
+.cover_contener {
+  position: relative;
+}
+
+.book_cta {
+  position: relative;
+  top: -2rem;
+  right: -19rem;
+}
+
+.supr_book_form {
+  position: fixed;
+  right: 2rem;
+  bottom: 2rem;
 }

@@ -13,12 +13,14 @@
 
         <!-- *Injection du titre de la page* -->
         <title>@yield('title') Book a book</title>
+        @livewireStyles
     </head>
 
     <body>
         <!-- Injection du contenu -->
         @yield('content')
         <script src="{{ asset('js/app.js') }}" defer></script>
+        @livewireScripts
     </body>
 
 </html>

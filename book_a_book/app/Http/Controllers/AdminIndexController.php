@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bloc;
-use Illuminate\Http\Request;
 
 class AdminIndexController extends Controller
 {

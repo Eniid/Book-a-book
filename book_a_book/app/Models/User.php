@@ -23,6 +23,15 @@ class User extends Authenticatable
         'group',
     ];
 
+
+    public function order (){
+        return $this->hasOne(Order::class); 
+    }
+
+    public function stat (){
+        return $this->order()->belongsTo(Statu::class, 'statu_id'); 
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *

@@ -1,0 +1,36 @@
+.student-order-contener {
+    display: flex;
+    overflow-x: scroll;
+    width: 100%;
+
+    div{
+        margin: 0.4rem .5rem;
+    }
+
+    img {
+        height: 7.5rem;
+    }
+}
+
+
+.students_contener {
+    width: 350px;
+    position: relative;
+
+    .hcta {
+        background-color: #aa0202;
+        color: #fff;
+        border: none;
+    }
+    
+    .book_component_link {
+
+
+        left: 8.5rem;
+    }
+}
+
+
+.student_finished_order {
+    color: #aa0202;
+}

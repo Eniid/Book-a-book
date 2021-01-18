@@ -21,13 +21,24 @@ use Illuminate\Support\Facades\Route;
 
 
 //* Student 
-Route::get('/', [StudentsIndexController::class, 'read'])->middleware('auth');
+Route::get('/', [StudentsIndexController::class, 'index'])->middleware('auth');
+Route::post('/', [StudentsIndexController::class, 'store'])->middleware('auth');
 
 
 //* Admin
 Route::get('/admin', [AdminIndexController::class, 'read']);
 Route::get('/admin/students', [StudentsController::class, 'read']);
 Route::get('/admin/books', [BooksController::class, 'read']);
+
+
+Route::get('/admin/books/edit/{book:id}', [BooksController::class, 'update']);
+Route::patch('/admin/books', [BooksController::class, 'update']);
+Route::post('/admin/books/', [BooksController::class, 'del']);
+
+
+
+Route::get('/admin/books/new', [BooksController::class, 'create']);
+Route::post('/admin/books', [BooksController::class, 'store']);
 
 
 //* register 

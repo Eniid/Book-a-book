@@ -12,4 +12,8 @@ class Bloc extends Model
     protected $fillable = [
         'bloc',
     ];
+
+    public function books (){
+        return $this->hasMany(Book::class); 
+    }
 }

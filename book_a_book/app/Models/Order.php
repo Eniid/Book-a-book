@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Order extends Model
 {
     use HasFactory;
+
+    public function status (){
+        return $this->belongsTo(Statu::class, 'statu_id'); 
+    }
+
+
+    public function books()
+    {
+        return $this->belongsToMany(Book::class);
+    }
 }

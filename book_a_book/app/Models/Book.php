@@ -19,4 +19,9 @@ class Book extends Model
         'link', 
         'requierd',
     ];
+
+
+    public function blocs (){
+        return $this->belongsToMany(Bloc::class); 
+    }
 }
