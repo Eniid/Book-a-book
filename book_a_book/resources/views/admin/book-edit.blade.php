@@ -1,51 +1,16 @@
-@extends('_layout.layout')
+@extends('_layout.admin')
 
 <!-- Titre de la page -->
 
 @section('title')
-Editer om du livre | 
+Editer om du livre |
 @endsection
 
 <!-- Contenu de la page -->
 
 @section('content')
-<header class="aside">
-        <h1><img src="{{ asset('../img/logo.svg') }}" alt=""></h1>
-
-        <div class="profil">
-            <img src="{{ asset('../img/avatar.jpg') }}" class="pp"  alt="">
-            <span class="user_name">Xavier Spirler</span>
-            <a href="#" class="user_profil">profil</a>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" >
-                @csrf
-                <input type="submit" class="deco" value="Deconexion">
-            </form>
-        </div>
 
 
-        <input type="checkbox" id="nav" class="nav_input visually-hidden">
-            <div class="nav_control">
-                <label for="nav" class="nav_lab"><span class="open_nav"><img src="{{ asset('../img/menu.png') }}" alt="open"></span><span class="close_nav"><img src="{{ asset('../img/x.png') }}" alt="close"></span></label>
-            </div>
-        <div class="mobile">
-            <nav class="nav">
-                <ol>
-                    <li><a href="/admin" class="nav_link">Dashbord</a></li>
-                    <li><a href="/admin/students" class="nav_link">Etudients</a></li>
-                    <li><a href="/admin/books" class="nav_link">Livres</a></li>
-                </ol>
-            </nav>
-
-            <section class="feedback">
-                <h2>Statistiques</h2>
-                <p class="no_feedback_p"><b>10</b> commendes sont en cours</p>
-                <p class="no_feedback_p"><b>10</b> on été payer</p>
-            </section>
-        </div>
-    </header>
-
-
-    <main class="main">
     <div class="book_edit">
         <form action="/admin/books" method="post" enctype="multipart/form-data">
         @csrf
@@ -61,7 +26,7 @@ Editer om du livre |
                 <img src="{{ asset('../img/edit_black.svg') }}" alt="" class="edit_pic">
                 </div>
                 <div class="main_form">
-                    
+
 
 
                 <fieldset class="book_edit_book_info">
@@ -77,7 +42,7 @@ Editer om du livre |
 
                     <label for="link" class="isbn">Liens vers Amazone</label>
                     <input type="text" name="link" id="link" class="form-control " value="{{$book->link}}">
-                
+
 
                     <label for="requ" class="isbn">Obligatoire</label>
                     <input type="checkbox" name="requ" id="requ" class="form-control"  value="{{$book->required}}">
@@ -98,7 +63,7 @@ Editer om du livre |
                         @endforeach
                     </select>
 
-                    
+
                     <label for="school_price">Prix</label>
                     <input type="number" name="school_price" id="school_price" class="form-control" value="{{$book->school_price}}">
 
@@ -114,7 +79,7 @@ Editer om du livre |
 
             </div>
                 <input type="submit" name="" id="" class="hcta cta form_cta book_cta" value="Sauvgarder">
-            
+
 
 
 
@@ -128,13 +93,10 @@ Editer om du livre |
 
 
 
-    </div>
-
-
 
 
 
 
     </main>
-    
+
 @endsection

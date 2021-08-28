@@ -20,9 +20,17 @@ use Illuminate\Support\Facades\Route;
 
 
 
-//* Student 
+//* Student
 Route::get('/', [StudentsIndexController::class, 'index'])->middleware('auth');
-Route::post('/', [StudentsIndexController::class, 'store'])->middleware('auth');
+Route::post('/plus', [StudentsIndexController::class, 'plus'])->middleware('auth');
+Route::post('/moins', [StudentsIndexController::class, 'moins'])->middleware('auth');
+
+Route::get('/commande', [StudentsIndexController::class, 'view'])->middleware('auth');
+Route::post('/del', [StudentsIndexController::class, 'del'])->middleware('auth');
+Route::post('/valid', [StudentsIndexController::class, 'valid'])->middleware('auth');
+
+Route::get('/commande-en-cours', [StudentsIndexController::class, 'commande'])->middleware('auth');
+
 
 
 //* Admin
@@ -41,6 +49,6 @@ Route::get('/admin/books/new', [BooksController::class, 'create']);
 Route::post('/admin/books', [BooksController::class, 'store']);
 
 
-//* register 
+//* register
 Route::get('/log', [RegisterController::class, 'read']);
 

@@ -1,206 +1,31 @@
 
 
-//@import "settings/settings.scss"; 
-// @import "reset/resetcss.scss"; 
-// @import "elements/elements.scss";
-@import "object/object.scss"; 
+@import "reset.scss";
+@import "elements.scss";
+@import "setup.scss";
+@import "object/object.scss";
 @import "comp/comp.scss";
 
 
 
 
 
-// Note : A l'origine j'avais des jolis fichier Sass tout bien organiser, puis j'ai eu un bug et sans savoir pourquoi mon fichier CSS dans recources etait vite. 
-// Pas chance j'ai récupérer la version de public avant de relancer un Watch et j'ai recupérer ça : 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-}
 
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure,
-footer, header, hgroup, menu, nav, section {
-  display: block;
-}
-
-body {
-  line-height: 1;
-}
-
-ol, ul {
-  list-style: none;
-}
-
-blockquote, q {
-  quotes: none;
-}
-
-blockquote:before, blockquote:after,
-q:before, q:after {
-  content: "";
-  content: none;
-}
-
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-body {
-  background-color: #F7F7F7;
-  width: 100%;
-  height: 100%;
-  font-family: hn, Helvetica, Arial, sans-serif;
-  font-size: 14px;
-}
-
-h1 {
-  text-align: center;
-  margin: 2.5rem 0 2.5rem 0;
-}
-
-h2 {
-  font-size: 2.7rem;
-  padding: 2rem 0 1rem 0;
-}
-
-h3 {
-  font-size: 1.4rem;
-  padding: 1rem 0 0.7rem 0;
-}
-
-p {
-  line-height: 1.2rem;
-}
-
-header {
-  background-color: #262F31;
-  color: #fff;
-}
-
-a {
-  color: #fff;
-}
-
-.visually-hidden {
-  position: absolute !important;
-  border: 0 !important;
-  height: 1px !important;
-  width: 1px !important;
-  padding: 0 !important;
-  overflow: hidden !important;
-  clip: rect(0, 0, 0, 0) !important;
-}
-
-.profil {
-  text-align: center;
-}
-
-.pp {
-  display: block;
-  margin: 0 auto;
-  border-radius: 100px;
-  width: 95px;
-  height: 95px;
-}
-
-.user_name {
-  display: block;
-  font-size: 1.1rem;
-  margin: 0.2rem;
-}
-
-nav li {
-  font-size: 0.75rem;
-  font-family: hnb, Helvetica, Arial, sans-serif;
-  padding: 0.7rem 0;
-}
-nav li a {
-  text-decoration: none;
-  letter-spacing: 0.05rem;
-  font-weight: bold;
-}
-
-.nav_focused::before {
-  content: url("../img/focused_arrow.svg");
-  padding-right: 0.7rem;
-}
-
-.nav_link {
-  padding: 0.4rem;
-  transition: 0.1s;
-}
-
-.nav_link:hover {
-  color: #d6a55d;
-  transition: 0.1s;
-}
-
-.feedback h2 {
-  font-size: 1.2rem;
-}
-
-.no_feedback_p {
-  color: #A2A2A2;
-}
-
-.book_component_img {
-  position: relative;
-}
+.book_component_link {
+    position: absolute;
+    top: -1rem;
+    right: -1rem;
+  }
 
 .add {
+
   position: absolute;
-  top: -1rem;
-  right: -1rem;
-  background-color: #aa0202;
-  height: 2.5rem;
-  width: 2.5rem;
-  border-radius: 6rem;
-  border: none;
-}
-.add img {
-  width: 1rem;
-  height: 1rem;
+  bottom: -1rem;
+  left: 5rem;
 }
 
-.add:hover {
-  transform: scale(1.05);
-  transition: cubic-bezier(0.17, 0.67, 0.83, 0.67);
-}
 
-.add_book_button {
-  padding: 1.5rem;
-}
 
-.cta {
-  display: block;
-  text-decoration: none;
-  font-size: 0.8rem;
-  border-radius: 5px;
-  background-color: #262F31;
-  padding: 0.7rem 1rem;
-  text-align: center;
-}
-
-.hcta {
-  background-color: #aa0202;
-}
 
 .filter_button {
   display: inline-block;
@@ -354,16 +179,8 @@ nav {
   box-shadow: 0px 2px 6px 0px #a8a8a8;
 }
 
-.book_component_link {
-  position: absolute;
-  bottom: -1rem;
-  left: 5rem;
-}
 
-.book_component_link:hover {
-  transform: scale(1.05);
-  transition: cubic-bezier(0.17, 0.67, 0.83, 0.67);
-}
+
 
 .price {
   color: #aa0202;
@@ -400,51 +217,51 @@ nav {
   .login input {
     background-color: #262F31 !important;
   }
-  
+
   .login:hover {
     transition: cubic-bezier(0.17, 0.67, 0.83, 0.67);
   }
-  
+
   .register {
     padding: 2rem;
     margin: auto;
   }
-  
+
   .register:hover {
     transition: cubic-bezier(0.17, 0.67, 0.83, 0.67);
   }
-  
+
   .reg_title {
     width: 60%;
     max-width: 200px;
   }
-  
+
   .desc {
     max-width: 300px;
     margin: 3rem auto;
   }
-  
+
   .no_order {
     text-align: center;
   }
-  
+
   .no_order_text {
     font-size: 3rem;
     line-height: 3rem;
     color: #c3bfbf;
     margin: 6rem 0;
   }
-  
+
   .students {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
   }
-  
+
   .students_contener {
     width: 350px;
   }
-  
+
   .students_user_name_contener {
     text-align: center;
     margin: 0.2rem 0 1rem 0;
@@ -452,7 +269,7 @@ nav {
   .students_user_name_contener p {
     color: grey;
   }
-  
+
   .students_pp {
     position: relative;
     top: 2.5rem;
@@ -460,30 +277,30 @@ nav {
     height: auto;
     box-shadow: 0px 2px 6px 0px #a8a8a8;
   }
-  
+
   .student_view_contener {
     background-color: white;
     padding: 3rem;
     box-shadow: 0px 2px 6px 0px #c2c2c2;
   }
-  
+
   .students_user_name {
     color: black;
   }
-  
+
   .student_no_order {
     color: grey;
     padding: 0.2rem 0;
   }
-  
+
   .book_edit {
     margin: 5rem auto;
   }
-  
+
   .book_from_contener {
     display: flex;
   }
-  
+
   .cover_edit {
     display: block;
     font-size: 0;
@@ -492,7 +309,7 @@ nav {
     position: relative;
     top: -220px;
   }
-  
+
   .main_form {
     background-color: #fff;
     padding: 4rem;
@@ -514,7 +331,7 @@ nav {
   .main_form input:focus {
     border-bottom: #aa0202 solid 2px;
   }
-  
+
   .edit_pic {
     width: 1rem;
     position: absolute;
@@ -525,19 +342,21 @@ nav {
     padding: 1rem;
     border-radius: 4rem;
   }
-  
+
   .cover_contener {
     position: relative;
   }
-  
+
   .book_cta {
     position: relative;
     top: -2rem;
     right: -19rem;
   }
-  
+
   .supr_book_form {
     position: fixed;
     right: 2rem;
     bottom: 2rem;
   }
+
+

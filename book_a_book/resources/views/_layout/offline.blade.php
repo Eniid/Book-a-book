@@ -17,6 +17,12 @@
     </head>
 
     <body>
+
+
+        <!-- Menu de Navigation  -->
+
+
+
         <!-- Injection du contenu -->
         @yield('content')
         <script src="{{ asset('js/app.js') }}" defer></script>

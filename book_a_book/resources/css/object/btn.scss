@@ -1,0 +1,63 @@
+.order_btn{
+
+    background-color: #a8a8a8;
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 6rem;
+    border: none;
+  }
+
+  .order_btn.active{
+
+    background-color: #aa0202;
+  }
+
+
+
+  .order_btn img {
+    width: 1rem;
+    height: 1rem;
+  }
+
+
+  .order_btn.active:hover {
+    transform: scale(1.02);
+    transition: cubic-bezier(0.17, 0.67, 0.83, 0.67);
+  }
+
+
+  .order-book_number {
+    padding: 1rem;
+    box-shadow: 0px 2px 6px 0px #a8a8a8;
+    background: #ffff;
+    border-radius: 5px;
+    margin: 0 1rem;
+  }
+
+
+  //****//
+
+
+  .add_book_button {
+    padding: 1.5rem;
+  }
+
+  .cta {
+    display: block;
+    text-decoration: none;
+    font-size: 0.8rem;
+    border-radius: 5px;
+    background-color: #262F31;
+    padding: 0.7rem 1rem;
+    text-align: center;
+    color: #ffff;
+    border: none;
+  }
+  .cta:hover {
+    transform: scale(1.02);
+
+  }
+
+  .hcta {
+    background-color: #aa0202;
+  }

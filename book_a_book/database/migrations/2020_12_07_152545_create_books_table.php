@@ -23,8 +23,8 @@ class CreateBooksTable extends Migration
             $table->string('teacher');
             $table->string('class');
             $table->string('link');
-            $table->string('school_price');
-            $table->string('store_price');
+            $table->float('school_price');
+            $table->float('store_price');
             $table->boolean('required')->default(false);
             $table->foreignId('bloc_id')->constrained();
             $table->timestamps();

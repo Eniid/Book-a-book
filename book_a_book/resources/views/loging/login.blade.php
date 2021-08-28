@@ -1,4 +1,4 @@
-@extends('_layout.layout')
+@extends('_layout.offline')
 
 <!-- Titre de la page -->
 
@@ -16,8 +16,8 @@ register
         <div class="login">
             <h1><img src="{{ asset('../img/logo.svg') }}" alt="" class="reg_title"></h1>
             <p class="desc">Book a bool est une application qui permet aux étudiant de la section infographie de la haute école de la province de Liége de commander les livres nécessaires pour leur  année scolaire. </p>
-            
- 
+
+
             <div class="card-body">
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
@@ -154,10 +154,10 @@ register
                 </form>
             </div>
         </div>
-        
-        
-        
-        
+
+
+
+
 
 
 

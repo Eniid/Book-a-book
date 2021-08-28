@@ -10,16 +10,16 @@ use Livewire\WithPagination;
 
 class Students extends Component
 {
-    use WithPagination; 
-    public $search; 
+    use WithPagination;
+    public $search;
 
     public function render()
     {
         return view('livewire.students', [
             'students' => User::where('name', 'like', '%'.$this->search.'%')
             ->orWhere('group', 'like', '%'.$this->search.'%')
-            ->with('order.status', 'order.books' )
-            ->paginate(20), 
+            ->with('orders.statu', 'orders.books' )
+            ->paginate(20),
             'orders' => Order::with('books')->paginate(30)
         ]);
     }

@@ -12,4 +12,9 @@ class BookOrder extends Model
 
     protected $table = 'book_order';
 
+
+    public function order (){
+        return $this->belongsTo(Order::class, 'order_id');
+    }
+
 }

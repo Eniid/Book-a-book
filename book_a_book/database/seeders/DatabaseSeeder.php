@@ -23,5 +23,14 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UserSeeder::class
         ]);
+        $this->call([
+            StatusSeeder::class
+        ]);
+        $this->call([
+            OrderSeeder::class
+        ]);
+        $this->call([
+            BOSeeder::class
+        ]);
     }
 }

@@ -12,16 +12,23 @@ class Book extends Model
         'title',
         'author	',
         'edition',
-        'isbn', 
+        'isbn',
         'stock',
         'teacher',
         'class',
-        'link', 
+        'link',
         'requierd',
     ];
 
 
     public function blocs (){
-        return $this->belongsToMany(Bloc::class); 
+        return $this->belongsToMany(Bloc::class);
     }
+
+    public function orders (){
+        return $this->belongsToMany(Order::class);
+    }
+
+
+
 }

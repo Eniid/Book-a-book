@@ -24,12 +24,12 @@ class User extends Authenticatable
     ];
 
 
-    public function order (){
-        return $this->hasOne(Order::class); 
+    public function orders (){
+        return $this->hasMany(Order::class);
     }
 
-    public function stat (){
-        return $this->order()->belongsTo(Statu::class, 'statu_id'); 
+    public function statu (){
+        return $this->order()->belongsTo(Statu::class, 'statu_id');
     }
 
     /**
