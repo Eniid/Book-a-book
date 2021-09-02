@@ -22,12 +22,21 @@
 
 
         <header class="aside">
-            <h1><img src="{{ asset('../img/logo.svg') }}" alt="Book a Book"></h1>
+            <h1>
+                <a href="/">
+                    <img src="{{ asset('../img/logo.svg') }}" alt="Book a Book">
+                </a>
+            </h1>
 
             <div class="profil">
-                <img src="{{ asset('../img/avatar.jpg') }}" class="pp"  alt="">
-                <span class="user_name">{{ Auth::user()->name }}</span>
-                <a href="#" class="user_profil">profil</a>
+                <img src="
+                @if (Auth::user()->img)
+                /{{Auth::user()->img}}
+                @else
+                        {{'https://eu.ui-avatars.com/api/?name=' . urlencode(Auth::user()->name) . '&size=120&background=aa0202&color=ffffff'}}
+                @endif
+            " alt="" class="pp">                <span class="user_name">{{ Auth::user()->name }}</span>
+                <a href="/profil" class="user_profil">profil</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" >
                     @csrf
                     <input type="submit" class="deco" value="Deconexion">
@@ -52,18 +61,15 @@
                 <section class="feedback">
                     <h2>Votre commende</h2>
 
+
                     @if ($booksOrder)
 
-                        <ul>
-                        @foreach ($order->books as $book)
-                        <li>
-                            x{{ $book->quantity }} -> {{ $book-> title }} ______ {{ $book->totalPrice }}€
+                    <div class="order_box">
+                        <p class="info">Il y a //Cedric// livre dans votre commande.</p>
+                        <p class="prix">Prix :  {{ $order->total }}€</p>
 
-                        </li>
-                        @endforeach
-                         </ul>
 
-                         Total : {{ $order->total }}
+                    </div>
 
 
 
@@ -85,7 +91,11 @@
 
 
         <!-- Injection du contenu -->
-        @yield('content')
+
+        <main class="main">
+            @yield('content')
+        </main>
+
         <script src="{{ asset('js/app.js') }}" defer></script>
         @livewireScripts
     </body>

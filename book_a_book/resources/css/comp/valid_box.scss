@@ -41,3 +41,30 @@
     left: 0;
     right: 0;
 }
+
+
+
+.pp_edit {
+    display: block;
+    margin: 0 auto;
+    border-radius: 100px;
+    width: 95px;
+    height: 95px;
+}
+
+
+textarea {
+    display: block;
+    width: 100%;
+    height: 10rem;
+    border: #F7F7F7 solid 2px;
+    outline: none;
+    padding: 0.5rem 1rem;
+    margin: 0.7rem 0 1.2rem 0;
+    display: block;
+    margin-right: 2rem;
+}
+
+textarea:focus {
+    border-color: #aa0202;
+}

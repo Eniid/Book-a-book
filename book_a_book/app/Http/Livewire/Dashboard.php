@@ -2,13 +2,16 @@
 
 namespace App\Http\Livewire;
 
+use Livewire\Component;
 use App\Models\Bloc;
 use App\Models\Book;
-use Livewire\Component;
+use App\Models\Order;
 use Livewire\WithPagination;
 
-class AdminBooks extends Component
+
+class Dashboard extends Component
 {
+
     use WithPagination;
     protected $paginationTheme = 'bootstrap';
 
@@ -16,21 +19,22 @@ class AdminBooks extends Component
     public $byBloc = null;
 
 
+
     public function render()
     {
-
-        $books = Book::all();
+        $books = Book::has('orders')->with('orders', 'orders.user', 'orders.statu')->get();
         $blocs = Bloc::all();
 
 
-        return view('livewire.admin-books', [
+        return view('livewire.dashboard', [
             'blocs' => Bloc::all(),
             'books' => Book::when($this->byBloc, function($query){
                 $query->where('bloc_id', $this->byBloc);
             })
             ->where('title', 'like', '%'.$this->search.'%')
-            ->paginate(10),
+            ->paginate(2),
         ]);
+
 
 
     }

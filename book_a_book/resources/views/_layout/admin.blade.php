@@ -27,12 +27,22 @@
 
         <!-- Menu de Navigation  -->
         <header class="aside">
-            <h1><img src="{{ asset('../img/logoadd.svg') }}" alt="Book a Book"></h1>
+            <h1>
+                <a href="/admin">
+                    <img src="{{ asset('../img/logoadd.svg') }}" alt="Book a Book">
+                </a>
+            </h1>
 
             <div class="profil">
-                <img src="{{ asset('../img/avatar.jpg') }}" class="pp"  alt="">
+                <img src="
+                @if (Auth::user()->img)
+                /{{Auth::user()->img}}
+                @else
+                        {{'https://eu.ui-avatars.com/api/?name=' . urlencode(Auth::user()->name) . '&size=120&background=aa0202&color=ffffff'}}
+                @endif
+            " alt="" class="pp">
                 <span class="user_name">Xavier Spirler</span>
-                <a href="#" class="user_profil">profil</a>
+                <a href="/profil" class="user_profil">profil</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" >
                     @csrf
                     <input type="submit" class="deco" value="Deconexion">
@@ -49,9 +59,21 @@
                 <!-- Le Menu  -->
                 <nav class="nav">
                     <ol>
-                        <li><a href="/admin" class="nav_link">Dashbord</a></li>
-                        <li><a href="/admin/students" class="nav_link">Etudients</a></li>
-                        <li><a href="/admin/books" class="nav_link nav_focused">Livres</a></li>
+                        <li><a href="/admin" class="nav_link
+                            @if (Request::path() == 'admin')
+                            nav_focused
+                            @endif
+                            ">Dashbord</a></li>
+                        <li><a href="/admin/students" class="nav_link
+                            @if (Request::path() == 'admin/students')
+                            nav_focused
+                            @endif
+                            ">Etudients</a></li>
+                        <li><a href="/admin/books" class="nav_link
+                            @if (Request::path() == 'admin/books')
+                            nav_focused
+                            @endif
+                        ">Livres</a></li>
                     </ol>
                 </nav>
 

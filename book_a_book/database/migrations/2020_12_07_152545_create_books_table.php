@@ -23,6 +23,7 @@ class CreateBooksTable extends Migration
             $table->string('teacher');
             $table->string('class');
             $table->string('link');
+            $table->string('img')->nullable();
             $table->float('school_price');
             $table->float('store_price');
             $table->boolean('required')->default(false);

@@ -13,9 +13,13 @@ register
 
     <main class="register_contener">
 
+        <input type="checkbox" id="log_reg_toggle" class="log_reg_check">
+
+
         <div class="login">
-            <h1><img src="{{ asset('../img/logo.svg') }}" alt="" class="reg_title"></h1>
-            <p class="desc">Book a bool est une application qui permet aux étudiant de la section infographie de la haute école de la province de Liége de commander les livres nécessaires pour leur  année scolaire. </p>
+            <div class="login_inside">
+                <h1><img src="{{ asset('../img/logo.svg') }}" alt="" class="reg_title"></h1>
+            <p class="desc">Book a book est une application qui permet aux étudiant de la section infographie de la haute école de la province de Liége de commander les livres nécessaires pour leur  année scolaire. </p>
 
 
             <div class="card-body">
@@ -27,11 +31,12 @@ register
 
                         <div class="col-md-6">
                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-
                             @error('email')
-                                <span class="invalid-feedback" role="alert">
+                            <div class="alert_box">
+                                <span class="invalid-feedback" role="alert" class="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
+                            </div>
                             @enderror
                         </div>
                     </div>
@@ -79,7 +84,13 @@ register
                         </div>
                     </div>
                 </form>
+
+                <div class="register_btn">
+                    Vous n'avez pas encore de comptes ? <label for="log_reg_toggle" class="log_reg_toggle">Crée un compte</label>
+                </div>
             </div>
+            </div>
+
         </div>
 
         <div class="register">
@@ -95,9 +106,9 @@ register
                             <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                             @error('name')
-                                <span class="invalid-feedback" role="alert">
+                                <div class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
-                                </span>
+                                </div>
                             @enderror
                         </div>
                     </div>
@@ -106,12 +117,6 @@ register
                         <label for="email">{{ __('E-Mail Address') }}</label>
                         <div class="col-md-6">
                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                            @error('email')
-                                <span role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
                         </div>
                     </div>
 
@@ -121,7 +126,7 @@ register
                         <div>
                             <input id="password" type="password"  name="password" required autocomplete="group">
                             @error('password')
-                                <span class="invalid-feedback" role="alert">
+                                <span class="invalid-feedback" role="alert" class="alert">
                                     <strong>Vous devez indiquer votre numéro de groupe</strong>
                                 </span>
                             @enderror
@@ -142,6 +147,13 @@ register
                         <div>
                             <input id="group" type="text"  name="group">
                         </div>
+                        @error('group')
+                        <div>
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        </div>
+                        @enderror
                     </div>
 
                     <div>
@@ -152,6 +164,10 @@ register
                         </div>
                     </div>
                 </form>
+
+                <div class="register_btn">
+                    Vous avez déjà un compte ? <label for="log_reg_toggle" class="log_reg_toggle">Se connecter</label>
+                </div>
             </div>
         </div>
 

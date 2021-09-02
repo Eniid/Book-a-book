@@ -1,7 +1,6 @@
 <div>
     {{-- The whole world belongs to you --}}
 
-    <main class="main">
         <div class="search_bar_contener">
             <form action="#">
                 <input wire:model.debounce.500ms="search" type="text" class="search_bar" placeholder="Rechercher étudient ou groupe">
@@ -9,14 +8,27 @@
             </form>
         </div>
 
+        @if($students->isEmpty())
+        <div class="no_order">
+            <p class="no_order_text">
+                Il n'y aucuns étudients pour cette recherche.
+            </p>
+        </div>
+        @endif
 
         <div class="students">
             @foreach($students as $student)
             <div class="students_contener">
-                <img src="{{ asset('../img/avatar.jpg') }}" class="pp students_pp"  alt="">
+                <img src="
+                            @if ($student->img)
+                            /{{$student->img}}
+                            @else
+                                    {{'https://eu.ui-avatars.com/api/?name=' . urlencode($student->name) . '&size=120&background=aa0202&color=ffffff'}}
+                            @endif
+                        " alt="" class="pp students_pp">
                 <div class="student_view_contener">
                     <div class="students_user_name_contener">
-                        <a href="#" class="students_user_name">{{$student->name}}</a>
+                        <a href="/admin/student/{{$student->id}}" class="students_user_name">{{$student->name}}</a>
                         <p>{{$student->group}}</p>
                     </div>
                     <p>Commande</p>

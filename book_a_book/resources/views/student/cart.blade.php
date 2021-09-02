@@ -9,64 +9,11 @@
 @section('content')
 
 
-    <header class="aside">
-        <h1><img src="{{ asset('../img/logo.svg') }}" alt=""></h1>
-
-        <div class="profil">
-            <img src="{{ asset('../img/avatar.jpg') }}" class="pp"  alt="">
-            <span class="user_name">{{ Auth::user()->name }}</span>
-            <a href="#" class="user_profil">profil</a>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" >
-                @csrf
-                <input type="submit" class="deco" value="Deconexion">
-            </form>
-        </div>
-
-
-        <input type="checkbox" id="nav" class="nav_input visually-hidden">
-            <div class="nav_control">
-                <label for="nav" class="nav_lab"><span class="open_nav"><img src="{{ asset('../img/menu.png') }}" alt="open"></span><span class="close_nav"><img src="{{ asset('../img/x.png') }}" alt="close"></span></label>
-            </div>
-        <div class="mobile">
-
-
-            <section class="feedback">
-                <h2>Votre commende</h2>
-
-                @if ($booksOrder)
-
-                    <ul>
-                    @foreach ($order->books as $book)
-                    <li>
-                        x{{ $book->quantity }} -> {{ $book-> title }} ______ {{ $book->totalPrice }}€
-
-                    </li>
-                    @endforeach
-                     </ul>
-
-                     Total : {{ $order->total }}
-
-
-
-                        <a href="/commande" class="cta hcta">Voir ma commande</a>
-                @else
-                    <p class="no_feedback_p">Vous n’avez pas encore ajouter de livre à votre commande.</p>
-                @endif
-            </section>
-        </div>
-
-    </header>
-
-
-
-
-
 
 
     <!-- Contenu de la page -->
 
 
-    <main class="main">
         <section class="requierd_books">
             <h2>Votre commande</h2>
 
@@ -119,5 +66,4 @@
 
 
         </section>
-    </main>
 @endsection

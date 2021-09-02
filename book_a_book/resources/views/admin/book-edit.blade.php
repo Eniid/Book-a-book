@@ -3,7 +3,7 @@
 <!-- Titre de la page -->
 
 @section('title')
-Editer om du livre |
+Editer om du livre :
 @endsection
 
 <!-- Contenu de la page -->
@@ -73,6 +73,8 @@ Editer om du livre |
                     <label for="stock">Nombre de livre en Stoque</label>
                     <input type="number" name="stock" id="stock" class="form-control" class="stock" value="{{$book->stock}}">
 
+                    <input type="hidden" value="{{$book->id}}" name="book_id">
+
                 </fieldset>
 
                 </div>
@@ -84,8 +86,8 @@ Editer om du livre |
 
 
         </form>
-        <form action="/admin/books" class="supr_book_form" method="post">
-        @csrf
+        <form action="/admin/books/del" class="supr_book_form" method="post">
+            @csrf
             <input type="hidden" value="{{$book->id}}" name="del_id">
             <input type="submit" value="Supprimer" class="cta form_cta">
         </form>

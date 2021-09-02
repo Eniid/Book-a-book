@@ -54,6 +54,8 @@ body {
   height: 100%;
   font-family: hn, Helvetica, Arial, sans-serif;
   font-size: 14px;
+  letter-spacing: 0.01rem;
+  font-weight: 100;
 }
 
 h1 {
@@ -270,6 +272,15 @@ a {
     padding: 2rem 1rem;
   }
 }
+.order_box {
+  margin-bottom: 1rem;
+}
+.order_box .prix {
+  margin: 1rem 0;
+  text-transform: uppercase;
+  font-size: 1rem;
+}
+
 .profil {
   text-align: center;
 }
@@ -327,6 +338,77 @@ nav li a {
   position: relative;
 }
 
+.main_form.profil_form {
+  width: auto;
+}
+
+@media screen and (min-width: 1800px) {
+  .main {
+    margin: auto;
+  }
+}
+.book_from_contener {
+  margin-top: 2rem;
+}
+
+.dash_ins {
+  background-color: #fff;
+  padding: 4rem;
+  width: 60%;
+  max-width: 1025px;
+  /* display: flex; */
+  /* justify-content: space-around; */
+  box-shadow: 0px 2px 6px 0px #c2c2c2;
+  margin-bottom: 2rem;
+  position: relative;
+}
+.dash_ins .title_box {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  border-bottom: #b1b1b1 solid 2px;
+  padding: 1rem;
+}
+.dash_ins h2 {
+  font-size: 1.2rem;
+}
+.dash_ins .dash_ins {
+  margin-top: 2rem;
+}
+.dash_ins .stock {
+  text-align: right;
+}
+.dash_ins .users {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 5rem;
+}
+.dash_ins .users .user {
+  box-shadow: 0px 2px 6px 0px #c2c2c2;
+  margin: 1rem;
+  text-align: center;
+  width: 200px;
+  min-width: 200px;
+}
+.dash_ins .users .group {
+  color: gainsboro;
+  margin-bottom: 1rem;
+}
+.dash_ins .users .pp_edit {
+  width: 50px;
+  height: 50px;
+  position: relative;
+  top: -25px;
+}
+
+.cta_end {
+  text-align: center;
+}
+
 .valid_box {
   background: rgba(255, 255, 255, 0.25);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
@@ -358,6 +440,118 @@ nav li a {
   right: 0;
 }
 
+.pp_edit {
+  display: block;
+  margin: 0 auto;
+  border-radius: 100px;
+  width: 95px;
+  height: 95px;
+}
+
+textarea {
+  display: block;
+  width: 100%;
+  height: 10rem;
+  border: #F7F7F7 solid 2px;
+  outline: none;
+  padding: 0.5rem 1rem;
+  margin: 0.7rem 0 1.2rem 0;
+  display: block;
+  margin-right: 2rem;
+}
+
+textarea:focus {
+  border-color: #aa0202;
+}
+
+.pagination {
+  display: flex;
+}
+.pagination button {
+  margin: 0 0.5rem;
+  border: none;
+  background-color: #ffffff;
+  padding: 0.6rem;
+  box-shadow: beige;
+  box-shadow: 0px 2px 6px 0px #c2c2c2;
+  border-radius: 0.2rem;
+  position: relative;
+  top: -0.6rem;
+}
+.pagination .page-link {
+  margin: 0 0.5rem;
+  border: none;
+  padding: 0.6rem;
+  box-shadow: beige;
+  border-radius: 0.2rem;
+}
+.pagination button:hover {
+  transform: scale(1.06);
+}
+
+.alert {
+  display: block;
+}
+
+.alert_box {
+  color: red;
+  margin: -0.6rem 0 1rem 0;
+}
+
+.log_reg_toggle {
+  font-weight: 800;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.log_reg_check {
+  width: 0;
+  height: 0;
+  opacity: 0;
+}
+
+.register_btn {
+  margin: 1rem;
+}
+
+.login {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media screen and (min-width: 1000px) {
+  .register_contener .login_btn {
+    display: none;
+  }
+  .register_contener .register_btn {
+    display: none;
+  }
+}
+.login_inside {
+  margin: auto;
+}
+
+@media screen and (max-width: 1000px) {
+  .register_contener .login {
+    width: 100%;
+  }
+  .register_contener .register {
+    display: none;
+  }
+  .register_contener h1 {
+    text-align: center;
+  }
+
+  .log_reg_check:checked ~ .login {
+    display: none;
+  }
+
+  .log_reg_check:checked ~ .register {
+    display: block;
+    width: 100%;
+  }
+}
 .book_component_link {
   position: absolute;
   top: -1rem;
@@ -401,6 +595,7 @@ nav li a {
   border: none;
   padding-right: 2rem;
   padding-left: 2rem;
+  color: black;
 }
 
 .search_button {
@@ -479,14 +674,20 @@ nav li a {
 .main {
   margin-left: 290px;
   padding: 1rem 12%;
+  max-width: 1200px;
 }
 
+@media screen and (min-width: 1800px) {
+  .main {
+    margin: auto;
+  }
+}
 nav {
-  margin: 5rem 2.75rem;
+  margin: 5rem 2.75rem 0rem;
 }
 
 .feedback {
-  margin: 5rem 2.75rem;
+  margin: 3rem 2.75rem;
 }
 
 .display_books {
@@ -553,10 +754,6 @@ nav {
   color: #fff;
   padding: 2rem;
   width: 50%;
-}
-
-.login input {
-  background-color: #262F31 !important;
 }
 
 .login:hover {
@@ -701,4 +898,74 @@ nav {
   position: fixed;
   right: 2rem;
   bottom: 2rem;
+}
+
+.new_book_button {
+  position: fixed;
+  top: unset;
+  bottom: 2rem;
+  right: 2rem;
+  height: 4rem;
+  width: 4rem;
+  left: auto;
+  background-color: #aa0202;
+  border-radius: 3rem;
+}
+
+.new_book_button:hover {
+  transform: scale(1.05);
+}
+
+.display_book-admin .add {
+  position: absolute;
+  top: -1rem;
+  right: -1rem;
+  left: auto;
+  background-color: #aa0202;
+  width: 2.1rem;
+  height: 2.1rem;
+  border-radius: 10rem;
+}
+.display_book-admin .add:hover {
+  transform: scale(1.05);
+}
+
+.alert-danger {
+  color: #aa0102;
+  text-transform: uppercase;
+  padding: 0rem 0rem 1.5rem 0;
+  font-size: 0.6rem;
+}
+
+@media screen and (max-width: 400px) {
+  .book_component_store .book_component_img {
+    margin-left: 2rem;
+  }
+  .book_component_store .book_component_img_contener {
+    right: auto;
+  }
+
+  .valid_box_in {
+    width: 60%;
+  }
+
+  .f_btn {
+    margin: 1rem 0 1rem 1rem;
+  }
+}
+.info {
+  font-size: 0.7rem;
+  line-height: 0.9rem;
+}
+
+@media screen and (max-width: 400px) {
+  main.main {
+    margin-left: 0;
+    padding: 0.3rem;
+  }
+
+  textarea {
+    padding: 1rem;
+    max-width: 89%;
+  }
 }

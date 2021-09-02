@@ -3,7 +3,7 @@
 <!-- Titre de la page -->
 
 @section('title')
-Livres |
+Livres :
 @endsection
 
 <!-- Contenu de la page -->

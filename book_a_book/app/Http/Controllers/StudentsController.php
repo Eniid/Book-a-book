@@ -7,13 +7,19 @@ use Illuminate\Http\Request;
 
 class StudentsController extends Controller
 {
-    
-    public function read(){
-        
+
+    public function index(){
+
         $students = User::all();
-        
+
         return view('admin.students', compact('students'));
     }
 
-    
+    public function read(User $user){
+
+
+        return view('admin.student', compact('user'));
+    }
+
 }
+

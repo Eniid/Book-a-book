@@ -1,0 +1,27 @@
+.pagination{
+    display: flex;
+
+    button {
+        margin: 0 .5rem;
+        border: none;
+        background-color: #ffffff;
+        padding: .6rem;
+        box-shadow: beige;
+        box-shadow: 0px 2px 6px 0px #c2c2c2;
+        border-radius: .2rem;
+        position: relative;
+        top: - 0.6rem
+    }
+
+    .page-link {
+        margin: 0 .5rem;
+        border: none;
+        padding: .6rem;
+        box-shadow: beige;
+        border-radius: .2rem;
+    }
+
+    button:hover {
+        transform: scale(1.06);
+    }
+}

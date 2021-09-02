@@ -11,15 +11,9 @@
 
 
 
-
-
-
-
-
     <!-- Contenu de la page -->
 
 
-    <main class="main">
         <section class="requierd_books">
             <h2>Obligatoire</h2>
             <p>Les livres obligatoires sont des livres que vous devez nécessairement vous procurer pour vos cours. Cela dit, rien ne vous empêche de vous les procurer par cous même. </p>
@@ -27,7 +21,6 @@
 
 
             <div class="display_books">
-
 
                 @foreach($bloc->books as $book)
                     @if($book->required == 1)
@@ -155,5 +148,4 @@
             </div>
 
         </section>
-    </main>
 @endsection

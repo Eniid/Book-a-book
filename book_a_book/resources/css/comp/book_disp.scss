@@ -1,0 +1,100 @@
+.main_form.profil_form {
+    width: auto;
+}
+
+@media screen and (min-width: 1800px) {
+
+    .main {
+        margin:auto;
+      }
+
+
+}
+
+
+
+
+
+.book_from_contener{
+    margin-top: 2rem;
+}
+
+
+.dash_ins {
+    background-color: #fff;
+    padding: 4rem;
+    width: 60%;
+    max-width: 1025px;
+    /* display: flex; */
+    /* justify-content: space-around; */
+    box-shadow: 0px 2px 6px 0px #c2c2c2;
+
+    margin-bottom: 2rem;
+
+    position: relative;
+
+
+    .title_box {
+        display: flex;
+        justify-content: space-between;
+
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        border-bottom: #b1b1b1 solid 2px;
+        padding: 1rem;
+    }
+
+    h2{
+        font-size: 1.2rem;
+    }
+
+
+    .dash_ins{
+        margin-top: 2rem;
+
+    }
+    .stock {
+        text-align: right;
+    }
+
+
+
+    .users {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+
+        margin-top: 5rem;
+
+        .user{
+            box-shadow: 0px 2px 6px 0px #c2c2c2;
+            margin: 1rem;
+            text-align: center;
+            width: 200px;
+            min-width: 200px;
+
+        }
+
+
+        .group {
+            color: gainsboro;
+            margin-bottom: 1rem;
+        }
+
+        .pp_edit{
+            width: 50px;
+            height: 50px;
+            position: relative;
+            top: -25px;
+        }
+
+    }
+}
+
+
+
+.cta_end {
+    text-align: center;
+}

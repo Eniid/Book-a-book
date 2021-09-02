@@ -1,0 +1,84 @@
+.alert{
+    display: block;
+}
+
+.alert_box{
+    color: red;
+    margin: -.6rem 0 1rem 0;
+}
+
+.log_reg_toggle{
+    font-weight: 800;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.log_reg_check{
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
+
+.register_btn {
+    margin: 1rem;
+}
+
+
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+@media screen and (min-width: 1000px) {
+
+    .register_contener{
+        .login_btn{
+            display: none;
+        }
+
+        .register_btn{
+            display: none;
+        }
+    }
+
+
+}
+
+.login_inside {
+    margin: auto;
+}
+
+
+
+@media screen and (max-width: 1000px) {
+
+    .register_contener{
+        .login{
+            width: 100%;
+        }
+
+        .register{
+            display: none;
+        }
+
+
+
+        h1 {
+            text-align: center;
+        }
+    }
+
+    .log_reg_check:checked ~ .login{
+        display: none;
+    }
+
+    .log_reg_check:checked ~ .register{
+        display: block;
+        width: 100%;
+    }
+
+}
+
+

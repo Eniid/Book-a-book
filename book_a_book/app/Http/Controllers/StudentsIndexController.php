@@ -28,22 +28,21 @@ class StudentsIndexController extends Controller
         ])->first();
 
 
+        $booksOrder = false;
 
-
-            $booksOrder = false;
         if($order){
-            $booksOrder = BookOrder::where('order_id', $order->id)->get();
+                $booksOrder = BookOrder::where('order_id', $order->id)->get();
+
+
+
+            $order->total = 0;
+
+            foreach($order->books as $book) {
+                $book->quantity =$booksOrder->where('book_id', $book->id)->count();
+                $book->totalPrice = $book->quantity * $book-> school_price;
+                $order->total += $book->totalPrice;
+            }
         }
-
-
-        $order->total = 0;
-
-        foreach($order->books as $book) {
-            $book->quantity =$booksOrder->where('book_id', $book->id)->count();
-            $book->totalPrice = $book->quantity * $book-> school_price;
-            $order->total += $book->totalPrice;
-        }
-
 
 
 

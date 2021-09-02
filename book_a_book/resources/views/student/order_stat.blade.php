@@ -13,7 +13,6 @@
     <!-- Contenu de la page -->
 
 
-    <main class="main">
         <section class="requierd_books">
             <h2>{{ $order->statu->status_display }}</h2>
             @if ($order->statu->id === 2)
@@ -49,5 +48,4 @@
             </div>
 
         </section>
-    </main>
 @endsection

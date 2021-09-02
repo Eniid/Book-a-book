@@ -7,6 +7,9 @@ use App\Models\Book;
 
 class AdminIndexController extends Controller
 {
+
+    public $search;
+
     public function read(){
 
         $blocs = Bloc::all();

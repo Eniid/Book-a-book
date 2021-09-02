@@ -58,6 +58,7 @@
   border: none;
   padding-right: 2rem;
   padding-left: 2rem;
+  color: black;
 }
 
 .search_button {
@@ -136,14 +137,30 @@
 .main {
   margin-left: 290px;
   padding: 1rem 12%;
+  max-width: 1200px;
+
+}
+
+
+
+
+//Mix
+
+@media screen and (min-width: 1800px) {
+
+    .main {
+        margin:auto;
+      }
+
+
 }
 
 nav {
-  margin: 5rem 2.75rem;
+    margin: 5rem 2.75rem 0rem;
 }
 
 .feedback {
-  margin: 5rem 2.75rem;
+    margin: 3rem 2.75rem;
 }
 
 .display_books {
@@ -213,9 +230,6 @@ nav {
     color: #fff;
     padding: 2rem;
     width: 50%;
-  }
-  .login input {
-    background-color: #262F31 !important;
   }
 
   .login:hover {
@@ -360,3 +374,92 @@ nav {
   }
 
 
+  .new_book_button {
+    position: fixed;
+    top: unset;
+    bottom: 2rem;
+    right: 2rem;
+    height: 4rem;
+    width: 4rem;
+    left: auto;
+    background-color: #aa0202 ;
+    border-radius: 3rem;
+}
+
+
+.new_book_button:hover {
+    transform: scale(1.05);
+}
+
+.display_book-admin {
+    .add {
+        position: absolute;
+        top: -1rem;
+        right: -1rem;
+        left: auto;
+        background-color: #aa0202;
+        width: 2.1rem;
+        height: 2.1rem;
+        border-radius: 10rem;
+    }
+
+    .add:hover {
+        transform: scale(1.05);
+    }
+}
+
+
+.alert-danger {
+    color: #aa0102;
+    text-transform: uppercase;
+    padding: 0rem 0rem 1.5rem 0;
+    font-size: .6rem;
+}
+
+
+
+
+
+@media screen and (max-width: 400px) {
+    .book_component_store{
+        .book_component_img {
+            margin-left: 2rem;
+          }
+
+
+          .book_component_img_contener {
+            right: auto;
+        }
+    }
+
+    .valid_box_in {
+
+        width: 60%;
+    }
+
+    .f_btn {
+        margin: 1rem 0 1rem 1rem;
+    }
+
+
+}
+
+.info {
+    font-size: 0.7rem;
+    line-height: 0.9rem;
+}
+
+
+@media screen and (max-width: 400px){
+main.main {
+    margin-left: 0;
+    padding: .3rem;
+}
+
+
+textarea {
+    padding: 1rem;
+    max-width: 89%;
+
+}
+}

@@ -18,16 +18,35 @@ class BooksController extends Controller
 
 
 
-
-
-
+// Mettre a jour un Livre!
 
     public function update(Request $request, Book $book){
 
-
-
-
         $blocs = Bloc::all();
+        //$book = Book::where('id', request('book_id'));
+
+        $validations = [];
+
+
+        if($request->title){
+            $validations['title']='min:4|max:40';
+        }
+
+        if($request->auth){
+            $validations['auth']='min:4|max:20';
+        }
+
+        if($request->edition){
+            $validations['edition']='min:4|max:20';
+        }
+
+        if($request->isbn){
+            $validations['isbn']='min:4|max:20';
+        }
+
+        if($request->prof){
+            $validations['prof']='min:4|max:20';
+        }
 
         if(request('title')){
             $book -> title = request('title');
@@ -35,7 +54,7 @@ class BooksController extends Controller
         if(request('auth')){
             $book -> author = request('auth');
         };
-        if(request('auth')){
+        if(request('edition')){
             $book -> edition = request('edition');
         };
         if(request('isbn')){
@@ -77,9 +96,6 @@ class BooksController extends Controller
 
 
 
-
-
-
     public function create(){
         $books = Book::all();
         $blocs = Bloc::all();
@@ -87,6 +103,9 @@ class BooksController extends Controller
 
         return view('admin.book-create', compact('books', 'blocs'));
     }
+
+    // Crer un livre !!! :D
+
 
     public function store(Request $request){
 
@@ -133,9 +152,11 @@ class BooksController extends Controller
 
     public function del(Request $request, Book $book){
 
-        dd("coucou");
-        //$del_id = request('del_id');
-        //Book::where('id', $del_id)->delete();
+
+
+        $bookDel = Book::where('id', request('del_id'));
+        $bookDel->delete();
+
 
         return redirect('/admin/books');
     }
