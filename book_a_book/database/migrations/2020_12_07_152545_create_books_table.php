@@ -19,7 +19,7 @@ class CreateBooksTable extends Migration
             $table->string('author');
             $table->string('edition');
             $table->string('isbn');
-            $table->unsignedSmallInteger('stock');
+            $table->integer('stock')->default(0);
             $table->string('teacher');
             $table->string('class');
             $table->string('link');

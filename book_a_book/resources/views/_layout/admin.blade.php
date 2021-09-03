@@ -21,13 +21,11 @@
     <!-- ********** -->
     <!-- LA PAGE !! -->
     <!-- ********** -->
-
-
     <body>
 
         <!-- Menu de Navigation  -->
         <header class="aside">
-            <h1>
+            <h1 class="admin_log">
                 <a href="/admin">
                     <img src="{{ asset('../img/logoadd.svg') }}" alt="Book a Book">
                 </a>
@@ -41,12 +39,14 @@
                         {{'https://eu.ui-avatars.com/api/?name=' . urlencode(Auth::user()->name) . '&size=120&background=aa0202&color=ffffff'}}
                 @endif
             " alt="" class="pp">
-                <span class="user_name">Xavier Spirler</span>
-                <a href="/profil" class="user_profil">profil</a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" >
-                    @csrf
-                    <input type="submit" class="deco" value="Deconexion">
-                </form>
+                <div class="user_infos">
+                    <span class="user_name">{{ Auth::user()->name }}</span>
+                    <a href="/profil" class="user_profil">profil</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" >
+                        @csrf
+                        <input type="submit" class="deco" value="Deconexion">
+                    </form>
+                </div>
             </div>
 
 
@@ -59,28 +59,31 @@
                 <!-- Le Menu  -->
                 <nav class="nav">
                     <ol>
-                        <li><a href="/admin" class="nav_link
-                            @if (Request::path() == 'admin')
-                            nav_focused
-                            @endif
-                            ">Dashbord</a></li>
                         <li><a href="/admin/students" class="nav_link
                             @if (Request::path() == 'admin/students')
                             nav_focused
                             @endif
-                            ">Etudients</a></li>
+                            ">Commandes</a>
+                        </li>
+                        <li><a href="/admin" class="nav_link
+                            @if (Request::path() == 'admin')
+                            nav_focused
+                            @endif
+                            ">Stokes</a>
+                        </li>
                         <li><a href="/admin/books" class="nav_link
                             @if (Request::path() == 'admin/books')
                             nav_focused
                             @endif
-                        ">Livres</a></li>
+                        ">Livres</a>
+                        </li>
                     </ol>
                 </nav>
 
                 <!-- Les Feedbacks  -->
                 <section class="feedback">
                     <h2>Statistiques</h2>
-                    <p class="no_feedback_p"><b>10</b> commendes sont en cours</p>
+                    <p class="no_feedback_p"><b>{{ $inProcess }}</b> commendes sont en cours</p>
                     <p class="no_feedback_p"><b>10</b> on été payer</p>
                 </section>
             </div>

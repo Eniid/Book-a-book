@@ -13,6 +13,7 @@
 
     <!-- Contenu de la page -->
 
+    @if(intval($bloc->books->where('required', 1)->count()) >= 1)
 
         <section class="requierd_books">
             <h2>Obligatoire</h2>
@@ -26,7 +27,13 @@
                     @if($book->required == 1)
                     <section class="book_component_store">
                         <div class="book_component_img_contener">
-                            <img src="{{ asset('../img/book_cover.jpg') }}" alt="">
+                            <img src="
+                            @if ($book->img)
+                                /{{$book->img}}
+                            @else
+                                {{ asset('../img/book_cover.jpg') }}
+                            @endif
+                            " alt="">
                         </div>
                         <div class="book_component_img">
                             <h3 class="book_title">{{$book->title}}</h3>
@@ -82,19 +89,27 @@
 
 
         </section>
+    @endif
 
+
+        @if(intval($bloc->books->where('required', 0)->count()) >= 1)
+        {{-- @if($bloc->books->where('required', 0)->count() >= 1) --}}
+        {{ $bloc->books->where('required', 0)->count() }}
         <section class="facultativ_books">
-
-        <h2>Facultative</h2>
+            <h2>Facultative</h2>
             <p>Livres conseillée par vos professeur, mais pas obligatoires. </p>
-
             <div class="display_books">
-
                 @foreach($bloc->books as $book)
                     @if($book->required == 0)
                     <section class="book_component_store">
                         <div class="book_component_img_contener">
-                            <img src="{{ asset('../img/book_cover.jpg') }}" alt="">
+                            <img src="
+                            @if ($book->img)
+                                /{{$book->img}}
+                            @else
+                                {{ asset('../img/book_cover.jpg') }}
+                            @endif
+                            " alt="">
                         </div>
                         <div class="book_component_img">
                             <h3 class="book_title">{{$book->title}}</h3>
@@ -148,4 +163,7 @@
             </div>
 
         </section>
+        @endif
+
+
 @endsection

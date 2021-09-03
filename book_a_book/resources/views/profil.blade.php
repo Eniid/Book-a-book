@@ -1,4 +1,5 @@
-    @extends('_layout.admin')
+
+   @extends('_layout.admin')
 
 
 <!-- Titre de la page -->
@@ -10,18 +11,17 @@
 
 
 <div class="profil-edit_box">
-    <form action="/profil" method="post" class="main_form profil_form">
+    <form action="/profil" method="post" class="main_form profil_form" enctype="multipart/form-data">
         <div class="">
 
                 @csrf
-
                 <label class="profil-edit_box_avatar" for="profil">
                     <img src="
-                            @if (Auth::user()->img)
+                        @if (Auth::user()->img)
                             /{{Auth::user()->img}}
-                            @else
+                        @else
                                     {{'https://eu.ui-avatars.com/api/?name=' . urlencode(Auth::user()->name) . '&size=120&background=aa0202&color=ffffff'}}
-                            @endif
+                        @endif
                         " alt="" class="pp_edit">
                 </label>
                 <input type="file" name="profil" id="profil" class="profil_pic_edit">

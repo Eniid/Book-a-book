@@ -21,7 +21,13 @@ Editer om du livre :
 
             <div class="book_from_contener">
                 <div class="cover_contener">
-                <img src="{{ asset('../img/book_cover.jpg') }}" alt="">
+                    <img src="
+                    @if ($book->img)
+                        /{{$book->img}}
+                    @else
+                        {{ asset('../img/book_cover.jpg') }}
+                    @endif
+                    " title="{{ $book->name }}" class="student-order-cover">
                 <input type="file" name="img" id="img" class="cover_edit" >
                 <img src="{{ asset('../img/edit_black.svg') }}" alt="" class="edit_pic">
                 </div>
@@ -45,7 +51,11 @@ Editer om du livre :
 
 
                     <label for="requ" class="isbn">Obligatoire</label>
-                    <input type="checkbox" name="requ" id="requ" class="form-control"  value="{{$book->required}}">
+                    <input type="checkbox" name="requ" id="requ" class="form-control"  value="1"
+                        @if ($book->required)
+                        checked
+                        @endif>
+
 
                 </fieldset>
 
@@ -84,15 +94,40 @@ Editer om du livre :
 
 
 
+        @if($book->orders->isEmpty())
+        <label class="cta hcta" for="del" class="cta form_cta supr_book_form">
+            Supprimer
+        </label>
+        <input type="checkbox" class="valid_b visually-hidden" id="del" name="valid">
+        <section class="valid_box">
+            <div class="valid_box_in">
+                <h3>Acction Irréversible!</h3>
+                <p>Cette acction va supprimer le livre définitivement.</p>
 
-        </form>
-        <form action="/admin/books/del" class="supr_book_form" method="post">
-            @csrf
-            <input type="hidden" value="{{$book->id}}" name="del_id">
-            <input type="submit" value="Supprimer" class="cta form_cta">
-        </form>
+                <div class="flex">
+                    <label for="del" class="cta f_btn">Annuler</label>
+                    <form action="/admin/books/del" method="post">
+                        @csrf
+                        <input type="hidden" value="{{$book->id}}" name="del_id">
+                        <button class="cta hcta f_btn">Suprimer</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+        @else
+        <label for="del" class="cta_unactived">
+            Supprimer
+        </label>
+        <input type="checkbox" class="valid_b visually-hidden" id="del" name="valid">
+        <section class="valid_box">
+            <div class="valid_box_in">
+                <h3>Supression impossible ! </h3>
+                <p>Il y a des commandes en cours pour se livre, il est donc impossible pour le moment de le supprimer.</p>
+                <label for="del" class="cta f_btn">Annuler</label>
 
-
+            </div>
+        </section>
+        @endif
 
 
 

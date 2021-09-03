@@ -23,7 +23,13 @@
 
                 <section class="book_component_store">
                     <div class="book_component_img_contener">
-                        <img src="{{ asset('../img/book_cover.jpg') }}" alt="">
+                        <img src="
+                        @if ($book->img)
+                            /{{$book->img}}
+                        @else
+                            {{ asset('../img/book_cover.jpg') }}
+                        @endif
+                        " alt="">
                     </div>
                     <div class="book_component_img">
                         <h3 class="book_title">{{$book->title}}</h3>

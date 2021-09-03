@@ -11,16 +11,43 @@ use Livewire\WithPagination;
 class Students extends Component
 {
     use WithPagination;
+    protected $paginationTheme = 'bootstrap';
+
     public $search;
+    public $byStat = null;
+
 
     public function render()
     {
+
+        $students = User::when($this->byStat, function($query){
+            $query->where($order->status_id, $this->byStat);
+        })
+        ->where('name', 'like', '%'.$this->search.'%')
+        ->orWhere('group', 'like', '%'.$this->search.'%')
+        ->with('orders', 'orders.statu', 'orders.books')
+        // ->with(['orders.books' => function($query) {
+        //     $query->distinct();
+        // }])
+        ->paginate(8);
+
+        foreach($students as $student){
+            foreach($student->orders as $order){
+                    $order->quantities = $order->books->countBy(function ($item) {
+                        return $item->id;
+                    });
+
+
+                //$order->books->unique('id');
+            }
+        }
+
+
+
         return view('livewire.students', [
-            'students' => User::where('name', 'like', '%'.$this->search.'%')
-            ->orWhere('group', 'like', '%'.$this->search.'%')
-            ->with('orders.statu', 'orders.books' )
-            ->paginate(20),
-            'orders' => Order::with('books')->paginate(30)
+            'students' => $students,
+            'orders' => Order::with('books')->paginate(30),
+            'status' => Statu::all()
         ]);
     }
 }

@@ -5,26 +5,51 @@ namespace App\Http\Controllers;
 use App\Models\Bloc;
 use App\Models\BlocBooks;
 use App\Models\Book;
+use App\Models\Order;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\Hash;
+
 
 class BooksController extends Controller
 {
     public function read(){
         $books = Book::all();
         $blocs = Bloc::all();
+        $inProcess = Order::where('statu_id', '<>', '1')->where('statu_id', '<>', '5')->count();
 
-        return view('admin.books', compact('books', 'blocs'));
+
+        return view('admin.books', compact('books', 'blocs', 'inProcess'));
     }
 
 
 
 // Mettre a jour un Livre!
 
+
+    public function edit(Book $book){
+        $books = Book::all();
+
+        $book->with('orders');
+        $blocs = Bloc::all();
+        $inProcess = Order::where('statu_id', '<>', '1')->where('statu_id', '<>', '5')->count();
+
+
+
+    return view('admin.book-edit', compact('books', 'blocs', 'book', 'inProcess'));
+}
+
+
+
+
+
     public function update(Request $request, Book $book){
 
-        $blocs = Bloc::all();
-        //$book = Book::where('id', request('book_id'));
 
+        // $blocs = Bloc::all();
+        $book = Book::where('id', request('book_id'))->first();
+
+        //$Book->id = $request->book_id;
         $validations = [];
 
 
@@ -34,6 +59,10 @@ class BooksController extends Controller
 
         if($request->auth){
             $validations['auth']='min:4|max:20';
+        }
+
+        if($request->img){
+            $validations['img']='request';
         }
 
         if($request->edition){
@@ -60,8 +89,19 @@ class BooksController extends Controller
         if(request('isbn')){
             $book -> isbn = request('isbn');
         };
-        if(request('stock')){
-            $book -> stock = request('stock');
+
+
+
+        $book -> stock = request('stock') ?? 0 ;
+
+
+        if(request('img')){
+            $fileName = urlencode($request->img->getClientOriginalName());
+            $fileNameFull = time() . '-' . $fileName;
+            $path = 'img/cover/' . $fileNameFull;
+            $request->img->move('img/cover', $fileNameFull);
+
+            $book -> img = $path;
         };
 
         if(request('prof')){
@@ -87,11 +127,17 @@ class BooksController extends Controller
             $book -> bloc_id = request('bloc');
         };
 
-        // $book -> required = 1;
+
+        if(request('requ')){
+            $book->required = 1;
+        } else {
+            $book->required = 0;
+        }
 
         $book ->save();
 
-        return view('admin.book-edit', compact('book', 'blocs'));
+
+        return redirect('/admin/books');;
     }
 
 
@@ -99,9 +145,11 @@ class BooksController extends Controller
     public function create(){
         $books = Book::all();
         $blocs = Bloc::all();
+        $inProcess = Order::where('statu_id', '<>', '1')->where('statu_id', '<>', '5')->count();
 
 
-        return view('admin.book-create', compact('books', 'blocs'));
+
+        return view('admin.book-create', compact('books', 'blocs', 'inProcess'));
     }
 
     // Crer un livre !!! :D
@@ -112,6 +160,7 @@ class BooksController extends Controller
 
         $book = new Book(request()->validate(
             [
+                'img' => 'required',
                 'title' => 'required|min:4',
                 'auth' => 'required|min:4',
                 'edition' => 'required|min:4',
@@ -127,6 +176,15 @@ class BooksController extends Controller
 
         );
 
+
+        $fileName = urlencode($request->img->getClientOriginalName());
+        $fileNameFull = time() . '-' . $fileName;
+        $path = 'img/cover/' . $fileNameFull;
+        $request->img->move('img/cover', $fileNameFull);
+
+
+        $book -> img = $path;
+
         $book -> title = request('title');
         $book -> author = request('auth');
         $book -> edition = request('edition');
@@ -140,8 +198,6 @@ class BooksController extends Controller
         $book -> bloc_id = request('bloc');
         $book -> required = 1;
         $book -> save();
-
-
 
 
         return redirect('/admin/books');;

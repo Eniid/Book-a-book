@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Bloc;
 use App\Models\Book;
+use App\Models\User;
 use App\Models\BookOrder;
 use App\Models\Order;
 use Illuminate\Database\Eloquent\Builder;
@@ -154,16 +155,11 @@ class StudentsIndexController extends Controller
 
     public function valid(Request $request){
 
-
-        // Changer le statu de la commande (Dans Order DONC)
-        $bloc_id = request('bloc')??1;
-
         $curent_user_id = Auth::user()->id;
         $order = Order::where('user_id', $curent_user_id)->first();
 
         $order->statu_id = 2;
         $order->save();
-
 
         return redirect('/commande-en-cours');
     }
@@ -175,6 +171,7 @@ class StudentsIndexController extends Controller
         $blocs = Bloc::has('books')->with('books')->get();
         $bloc_id = request('bloc')??1;
         $bloc = $blocs->where('id', $bloc_id)->first();
+        $admin = User::where('is_admin', '1')->first();
 
         $order = Order::where('user_id', Auth::user()->id)->where('archived', 0)->with('books')->with('statu')->first();
 
@@ -194,7 +191,7 @@ class StudentsIndexController extends Controller
 
 
 
-        return view('student.order_stat', compact('order', 'blocs', 'bloc_id', 'booksOrder'));
+        return view('student.order_stat', compact('order', 'admin', 'blocs', 'bloc_id', 'booksOrder'));
     }
 
 

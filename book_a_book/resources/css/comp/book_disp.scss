@@ -79,7 +79,7 @@
 
 
         .group {
-            color: gainsboro;
+            color: rgb(139, 139, 139);
             margin-bottom: 1rem;
         }
 
@@ -97,4 +97,26 @@
 
 .cta_end {
     text-align: center;
+}
+
+.order-btn_box {
+    position: absolute;
+    bottom: -1rem;
+    right: 0;
+    left: 0;
+    label {
+        width: 10rem;
+        margin: auto;
+    }
+}
+
+
+.price_box {
+    position: absolute;
+    top: 5.5rem;
+    right: .8rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #aa0102;
+    letter-spacing: .1rem;
 }

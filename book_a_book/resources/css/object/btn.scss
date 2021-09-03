@@ -58,6 +58,21 @@
 
   }
 
+
+
+  .cta_unactived {
+    display: block;
+    text-decoration: none;
+    font-size: 0.8rem;
+    border-radius: 5px;
+    background-color: #c9c9c9;
+    padding: 0.7rem 1rem;
+    text-align: center;
+    color: rgb(0, 0, 0);
+    border: none;
+  }
+
+
   .hcta {
     background-color: #aa0202;
   }

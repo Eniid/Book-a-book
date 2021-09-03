@@ -179,6 +179,18 @@ a {
   transform: scale(1.02);
 }
 
+.cta_unactived {
+  display: block;
+  text-decoration: none;
+  font-size: 0.8rem;
+  border-radius: 5px;
+  background-color: #c9c9c9;
+  padding: 0.7rem 1rem;
+  text-align: center;
+  color: black;
+  border: none;
+}
+
 .hcta {
   background-color: #aa0202;
 }
@@ -199,6 +211,9 @@ a {
     text-align: left;
     padding: 2rem 1rem;
     margin: 2.5rem 0 0rem 0;
+  }
+  body .admin_log {
+    padding: 0;
   }
 
   header.aside {
@@ -296,7 +311,7 @@ a {
 .user_name {
   display: block;
   font-size: 1.1rem;
-  margin: 0.2rem;
+  margin: 1rem;
 }
 
 nav li {
@@ -395,7 +410,7 @@ nav li a {
   min-width: 200px;
 }
 .dash_ins .users .group {
-  color: gainsboro;
+  color: #8b8b8b;
   margin-bottom: 1rem;
 }
 .dash_ins .users .pp_edit {
@@ -407,6 +422,27 @@ nav li a {
 
 .cta_end {
   text-align: center;
+}
+
+.order-btn_box {
+  position: absolute;
+  bottom: -1rem;
+  right: 0;
+  left: 0;
+}
+.order-btn_box label {
+  width: 10rem;
+  margin: auto;
+}
+
+.price_box {
+  position: absolute;
+  top: 5.5rem;
+  right: 0.8rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #aa0102;
+  letter-spacing: 0.1rem;
 }
 
 .valid_box {
@@ -552,6 +588,65 @@ textarea:focus {
     width: 100%;
   }
 }
+.comande-stat_info {
+  margin: 0.8rem 0 6rem;
+  font-size: 1rem;
+  /* color: #aa0102; */
+  line-height: 1.3rem;
+}
+.comande-stat_info span {
+  font-weight: bolder;
+  text-transform: uppercase;
+}
+
+.comande-stat_info_t {
+  font-size: 1rem;
+  /* color: #aa0102; */
+  line-height: 1.3rem;
+}
+
+.error_box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+}
+.error_box .the404 {
+  font-size: 25rem;
+  text-shadow: 0px 0px 21px #cacaca;
+  color: #fff;
+  font-weight: bold;
+}
+.error_box p {
+  margin-bottom: 4rem;
+  font-size: 2rem;
+  color: #929090;
+}
+
+@media screen and (max-width: 900px) {
+  .error_box .the404 {
+    font-size: 20rem;
+  }
+}
+@media screen and (max-width: 600px) {
+  .error_box .the404 {
+    font-size: 15rem;
+  }
+}
+@media screen and (max-width: 400px) {
+  .error_box .the404 {
+    font-size: 10rem;
+  }
+}
+@media screen and (max-width: 300px) {
+  .error_box .the404 {
+    font-size: 7rem;
+  }
+  .error_box p {
+    font-size: 1.6rem;
+  }
+}
 .book_component_link {
   position: absolute;
   top: -1rem;
@@ -682,7 +777,7 @@ textarea:focus {
     margin: auto;
   }
 }
-nav {
+.nav {
   margin: 5rem 2.75rem 0rem;
 }
 
@@ -703,14 +798,14 @@ nav {
 
 .book_component_img_contener {
   position: absolute;
-  right: 12rem;
+  left: 1rem;
   top: 2rem;
   z-index: -1000;
   transition: 1s;
 }
 
 .book_component_store:hover .book_component_img_contener {
-  right: 13rem;
+  left: -2rem;
   transition: 1s;
 }
 
@@ -968,4 +1063,26 @@ nav {
     padding: 1rem;
     max-width: 89%;
   }
+}
+@media screen and (max-width: 900px) {
+  .user_infos {
+    position: relative;
+    top: -0.8rem;
+  }
+
+  .cover_contener {
+    position: absolute;
+    left: 1rem;
+  }
+}
+.book_component_img_contener img {
+  max-height: 14.5rem;
+}
+
+.cover_contener img {
+  max-height: 14.5rem;
+}
+
+.new_year_btn {
+  margin: 3rem;
 }

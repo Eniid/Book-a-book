@@ -22,6 +22,7 @@ class Dashboard extends Component
 
     public function render()
     {
+
         $books = Book::has('orders')->with('orders', 'orders.user', 'orders.statu')->get();
         $blocs = Bloc::all();
 
@@ -32,6 +33,7 @@ class Dashboard extends Component
                 $query->where('bloc_id', $this->byBloc);
             })
             ->where('title', 'like', '%'.$this->search.'%')
+            ->withCount('orders')
             ->paginate(2),
         ]);
 

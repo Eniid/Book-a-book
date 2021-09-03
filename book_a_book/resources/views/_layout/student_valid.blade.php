@@ -23,7 +23,7 @@
 
         <header class="aside">
             <h1>
-                <a href="{{ route('student_home') }}">
+                <a href="/commande-en-cours">
                     <img src="{{ asset('../img/logo.svg') }}" alt="Book a Book">
                 </a>
             </h1>
@@ -36,54 +36,16 @@
                         {{'https://eu.ui-avatars.com/api/?name=' . urlencode(Auth::user()->name) . '&size=120&background=aa0202&color=ffffff'}}
                 @endif
             " alt="" class="pp">
-
             <div class="user_infos">
-                <span class="user_name">{{ Auth::user()->name }}</span>
+                <span class="user_name">Xavier Spirler</span>
                 <a href="/profil" class="user_profil">profil</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" >
                     @csrf
                     <input type="submit" class="deco" value="Deconexion">
                 </form>
             </div>
-
             </div>
 
-
-            <input type="checkbox" id="nav" class="nav_input visually-hidden">
-                <div class="nav_control">
-                    <label for="nav" class="nav_lab"><span class="open_nav"><img src="{{ asset('../img/menu.png') }}" alt="open"></span><span class="close_nav"><img src="{{ asset('../img/x.png') }}" alt="close"></span></label>
-                </div>
-            <div class="mobile">
-                <nav class="nav">
-                    <ol>
-                        @foreach($blocs as $b)
-                        <li><a href="?bloc={{$b->id}}" class="nav_link @if($b->id == $bloc_id) nav_focused @endif">{{$b->bloc}}</a></li>
-
-                        @endforeach
-                    </ol>
-                </nav>
-
-                <section class="feedback">
-                    <h2>Votre commende</h2>
-
-
-                    @if ($booksOrder)
-
-                    <div class="order_box">
-                        <p class="info">Il y a //Cedric// livre dans votre commande.</p>
-                        <p class="prix">Prix :  {{ $order->total }}€</p>
-
-
-                    </div>
-
-
-
-                            <a href="{{ route('student_cart') }}" class="cta hcta">Voir ma commande</a>
-                    @else
-                        <p class="no_feedback_p">Vous n’avez pas encore ajouter de livre à votre commande.</p>
-                    @endif
-                </section>
-            </div>
 
         </header>
 

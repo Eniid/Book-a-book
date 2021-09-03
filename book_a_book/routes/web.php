@@ -5,6 +5,7 @@ use App\Http\Controllers\BooksController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\StudentsController;
 use App\Http\Controllers\StudentsIndexController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,15 +23,15 @@ use Illuminate\Support\Facades\Route;
 
 
 //* Student
-    Route::get('/', [StudentsIndexController::class, 'index'])->middleware('auth');
+    Route::get('/', [StudentsIndexController::class, 'index'])->middleware('auth')->name('student_home') ;
     Route::post('/plus', [StudentsIndexController::class, 'plus'])->middleware('auth');
     Route::post('/moins', [StudentsIndexController::class, 'moins'])->middleware('auth');
 
-    Route::get('/commande', [StudentsIndexController::class, 'view'])->middleware('auth');
+    Route::get('/commande', [StudentsIndexController::class, 'view'])->middleware('auth')->name('student_cart') ;
     Route::post('/del', [StudentsIndexController::class, 'del'])->middleware('auth');
     Route::post('/valid', [StudentsIndexController::class, 'valid'])->middleware('auth');
 
-    Route::get('/commande-en-cours', [StudentsIndexController::class, 'commande'])->middleware('auth');
+    Route::get('/commande-en-cours', [StudentsIndexController::class, 'commande'])->middleware('auth')->name('student_order');
 
 
 
@@ -38,17 +39,26 @@ use Illuminate\Support\Facades\Route;
     Route::get('/admin', [AdminIndexController::class, 'read']);
     Route::get('/admin/students', [StudentsController::class, 'index']);
     Route::get('/admin/books', [BooksController::class, 'read']);
+    Route::post('/admin/books', [BooksController::class, 'store']);
 
     Route::get('/admin/student/{user:id}', [StudentsController::class, 'read']);
 
-    Route::get('/admin/books/edit/{book:id}', [BooksController::class, 'update']);
+    Route::get('/admin/books/edit/{book:id}', [BooksController::class, 'edit']);
     Route::patch('/admin/books', [BooksController::class, 'update']);
     Route::post('/admin/books/del', [BooksController::class, 'del']);
 
-
-
     Route::get('/admin/books/new', [BooksController::class, 'create']);
-    Route::post('/admin/books', [BooksController::class, 'store']);
+
+
+    //Les routes de modification des Ordres :D
+    Route::post('/order/payed', [OrderController::class, 'payed']);
+    Route::post('/order/avalible', [OrderController::class, 'abalible']);
+    Route::post('/order/finished', [OrderController::class, 'finished']);
+
+    Route::post('/reset', [OrderController::class, 'reset']);
+
+
+
 
 
 
