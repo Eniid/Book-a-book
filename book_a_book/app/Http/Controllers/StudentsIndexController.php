@@ -11,6 +11,12 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use Illuminate\Support\Facades\Mail;
+
+use App\Mail\OrderMade;
+
+
+
 class StudentsIndexController extends Controller
 {
     //
@@ -32,9 +38,7 @@ class StudentsIndexController extends Controller
         $booksOrder = false;
 
         if($order){
-                $booksOrder = BookOrder::where('order_id', $order->id)->get();
-
-
+            $booksOrder = BookOrder::where('order_id', $order->id)->get();
 
             $order->total = 0;
 
@@ -157,6 +161,11 @@ class StudentsIndexController extends Controller
 
         $curent_user_id = Auth::user()->id;
         $order = Order::where('user_id', $curent_user_id)->first();
+
+
+        $admin = User::where('is_admin', '1')->first();
+        Mail::to($admin->email)->send(new OrderMade());
+
 
         $order->statu_id = 2;
         $order->save();

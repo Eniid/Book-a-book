@@ -2,28 +2,31 @@
     {{-- To attain knowledge, add things every day; To attain wisdom, subtract things every day. --}}
 
 
-    <div class="search_bar_contener">
-        <form action="#">
-            <input wire:model.debounce.500ms="search" type="text" class="search_bar" placeholder="Rechercher un livre">
-            <button class="search_button"><img src="../img/search.svg" alt="" class="search"></button>
-        </form>
-    </div>
 
 
-    <label for="bloc">Trier par bloc</label>
-    <select wire:model="byBloc" class="filter_contener">
-        <option value="">Tout les blocs</option>
-        @foreach($blocs as $bloc)
-            <option value="{{$bloc->id}}">{{$bloc->bloc}}</option>
-        @endforeach
-    </select>
+    <section>
+        <h2>Vision des stoques </h2>
 
-    <div>
+        <div class="search_bar_contener">
+            <form action="#">
+                <input wire:model.debounce.500ms="search" type="text" class="search_bar" placeholder="Rechercher un livre">
+                <button class="search_button"><img src="../img/search.svg" alt="" class="search"></button>
+            </form>
+        </div>
+
+
+        <label for="bloc">Trier par bloc</label>
+        <select wire:model="byBloc" class="filter_contener">
+            <option value="">Tout les blocs</option>
+            @foreach($blocs as $bloc)
+                <option value="{{$bloc->id}}">{{$bloc->bloc}}</option>
+            @endforeach
+        </select>
 
         @if($books->isEmpty())
         <div class="no_order">
             <p class="no_order_text">
-                Il n'y aucunes commandes en cours pour cette recherche.
+                Il n'y aucunes livres correspondant.
             </p>
         </div>
         @endif
@@ -31,91 +34,91 @@
 
 
 
-        @foreach($books as $book)
-
-        <section class="book_from_contener">
-
-            <div class="cover_contener">
-                <img src="
-                        @if ($book->img)
-                            /{{$book->img}}
-                        @else
-                            {{ asset('../img/book_cover.jpg') }}
-                        @endif
-                        " alt="">
-            </div>
 
 
-            <div class="dash_ins">
-                <div class="title_box">
-                    <h2>{{ $book->title }}</h2>
-                    <div class="stock">
-                        <p> Nombre de commandes : {{ $book->orders_count }}                          </p>
-                        <p>Stock : {{ $book->stock }}</p>
-                    </div>
-                </div>
 
-                <div class="users">
-                    @foreach($book->orders as $order)
-                    <div class="user">
+        <div class="display_books display_book-admin">
+
+            @foreach($books as $book)
+            <section class="book_component_store">
+                <div class="book_component_img_contener">
                     <img src="
-                    @if ($order->user->img)
-                    /{{$order->user->img}}
+                    @if ($book->img)
+                        /{{$book->img}}
                     @else
-                            {{'https://eu.ui-avatars.com/api/?name=' . urlencode($order->user->name) . '&size=120&background=aa0202&color=ffffff'}}
+                        {{ asset('../img/book_cover.jpg') }}
                     @endif
-                    " alt="" class="pp_edit">
-
-                        <p>{{ $order->user->name }}</p>
-                        <p class="group">{{ $order->user->group }}</p>
-
-
-                                @if ($order->statu->status == 'cart')
-                                <div class="cta_unactived">
-                                    Commende en pannier
-                                </div>
-                            @elseif ($order->statu->status == 'ordered')
-                                <label class="cta hcta" for="order{{$order->user->id}}{{$book->id}}">
-                                    Marqué comme payer
-                                </label>
-                                <input type="checkbox" class="valid_b visually-hidden" id="order{{$order->user->id}}{{$book->id}}" name="valid">
-                                <section class="valid_box">
-                                    <div class="valid_box_in">
-                                        <h3>Marquer comme payer</h3>
-                                        <p>Cette action irrébersible valide que vous avez recu la totalitée du payement de {{ $order->user->name }} qui s'élève à //CEDRIC// </p>
-
-                                        <div class="flex">
-                                            <label for="order{{$order->user->id}}{{$book->id}}" class="cta f_btn">Annuler</label>
-                                            <form action="/order/payed" method="post">
-                                                @csrf
-                                                <input type="hidden" value="{{ $order->id }}" name="user_id">
-                                                <button class="cta hcta f_btn">Marquer comme payer</button>
-                                            </form>
-                                        </div>
-                                    </div>
-                                </section>
-
-
-
-
-                            @elseif ($order->statu->status == 'payed')
-                                <div class="cta htca hcta">
-                                    Marqué comme disponnible
-                                </div>
-                            @elseif ($order->statu->status == 'available')
-                                <div class="cta_unactived">
-                                    Récupèrer
-                                </div>
-                            @endif
-
-                    </div>
-                    @endforeach
+                    " alt="">
                 </div>
 
-            </div>
-        </section>
+                <div class="book_component_img">
+                    <h3>{{ $book->title }}</h3>
+                    <div class="students_user_name_contener">
+                        <p>Stock : {{ $book->stock }}</p>
+                        <p>Commandes : {{ $book->orders_count }}</p>
+                    </div>
+
+                    <div class="ordered_by">
+                        @foreach($book->orders as $order)
+
+                            <div class="buyerprofil_box">
+                                <a href="http://localhost:8887/admin/student/{{$order->user->id}}">
+                                    <img src="
+                                    @if ($order->user->img)
+                                    /{{$order->user->img}}
+                                    @else
+                                            {{'https://eu.ui-avatars.com/api/?name=' . urlencode($order->user->name) . '&size=120&background=aa0202&color=ffffff'}}
+                                    @endif
+                                    " alt="" class="buyer_pp">
+                                </a>
+
+                                <div class="buyerprofil_toggle">
+                                    <p>{{ $order->user->name }}</p>
+                                    <p class="group">{{ $order->user->group }}</p>
+                                    <p class="group">{{ $order->statu->status}}</p>
+                                </div>
+
+                            </div>
+
+                    @endforeach
+
+
+
+                    <label class="add book_component_add" for="edit_stock_{{ $book->id}}">
+                            <img src="{{ asset('../img/edit.svg') }}" alt="" class="edit_book">
+                    </label>
+                    <input type="checkbox" class="valid_b visually-hidden" id="edit_stock_{{ $book->id }}" name="valid">
+                    <section class="valid_box">
+                        <div class="valid_box_in">
+                            <h4 class="h3like">Motifier le stoque</h4>
+                            <form action="/stock/edit" method="post">
+                                @csrf
+                                <label for="{{ $book->id }}_stoque">Votre Stoque</label>
+                                <input type="text" id="{{ $book->id }}_stoque" name="stock" class="form-input" value="{{ $book->stock }}">
+                                <input type="hidden" name="book_id" value="{{ $book->id }}">
+                                <div class="flex">
+                                    <label for="edit_stock_{{ $book->id }}" class="cta f_btn">Annuler</label>
+                                    <button class="cta hcta f_btn">Modifier</button>
+                                </div>
+                            </form>
+
+                        </div>
+                    </section>
+
+
+
+
+                    </div>
+                </div>
+            </section>
+
+
 
         @endforeach
+
+        </div>
+
+
         {{ $books->links() }}
 
 
@@ -125,5 +128,5 @@
 
 
 
-    </div>
+    </section>
 </div>

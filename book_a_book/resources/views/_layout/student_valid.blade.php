@@ -47,6 +47,13 @@
             </div>
 
 
+            @if (Auth::user()->is_admin == 1)
+            <div class="nav_admin_btn">
+                <a href="{{ route('admin') }}">Acceder a l'interface de commande</a>
+            </div>
+            @endif
+
+
         </header>
 
 

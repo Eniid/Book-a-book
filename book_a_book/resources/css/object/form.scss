@@ -1,0 +1,16 @@
+
+  .form-input {
+    border: none;
+    border-bottom: #F7F7F7 solid 2px;
+    outline: none;
+    padding: 0.5rem 1rem;
+    margin: 0.7rem 0 1.2rem 0;
+    display: block;
+    margin-right: 2rem;
+  }
+
+
+
+  .form-input:focus {
+    border-bottom: #aa0202 solid 2px;
+  }

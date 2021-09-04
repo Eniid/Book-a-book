@@ -34,7 +34,7 @@ class Dashboard extends Component
             })
             ->where('title', 'like', '%'.$this->search.'%')
             ->withCount('orders')
-            ->paginate(2),
+            ->paginate(8),
         ]);
 
 

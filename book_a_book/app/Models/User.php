@@ -28,6 +28,10 @@ class User extends Authenticatable
         return $this->hasMany(Order::class);
     }
 
+    public function orders_all (){
+        return $this->hasMany(Order::withoutGlobalScope(ArchivedScope::class));
+    }
+
     public function statu (){
         return $this->order()->belongsTo(Statu::class, 'statu_id');
     }

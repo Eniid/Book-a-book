@@ -24,7 +24,42 @@ class UserController extends Controller
         $bloc_id = request('bloc')??1;
         $bloc = $blocs->where('id', $bloc_id)->first();
 
+        $inProcess = Order::where('statu_id', '<>', '1')->where('statu_id', '<>', '5')->count();
+
+
         //$order = Order::where('user_id', Auth::user()->id)->where('archived', 0)->with('books')->first();
+
+        $order = Order::where('user_id', Auth::user()->id)->where('archived', 0)->with('books')->with('statu')->first();
+
+
+        $booksOrder = false;
+        if($order){
+            $booksOrder = BookOrder::where('order_id', $order->id)->get();
+
+
+            $order->total = 0;
+
+            foreach($order->books as $book) {
+                $book->quantity =$booksOrder->where('book_id', $book->id)->count();
+                $book->totalPrice = $book->quantity * $book-> school_price;
+                $order->total += $book->totalPrice;
+            }
+        }
+
+
+        return view('profil.student', compact('blocs', 'bloc', 'bloc_id', 'order', 'booksOrder', 'inProcess'));
+    }
+
+
+
+
+    public function adminp(Request $request){
+        $blocs = Bloc::has('books')->with('books')->get();
+        $bloc_id = request('bloc')??1;
+        $bloc = $blocs->where('id', $bloc_id)->first();
+
+        $inProcess = Order::where('statu_id', '<>', '1')->where('statu_id', '<>', '5')->count();
+
         $order = Order::where('user_id', Auth::user()->id)->with([
             'books' => function ($q) {
                 $q->groupBy('books.id');
@@ -46,8 +81,15 @@ class UserController extends Controller
         }
 
 
-        return view('profil', compact('blocs', 'bloc', 'bloc_id', 'order', 'booksOrder'));
+        return view('profil.admin', compact('blocs', 'bloc', 'bloc_id', 'order', 'booksOrder', 'inProcess'));
     }
+
+
+
+
+
+
+
 
     public function update(Request $request){
 

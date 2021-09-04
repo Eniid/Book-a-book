@@ -55,10 +55,11 @@
                 </div>
             <div class="mobile">
                 <nav class="nav">
+                    <h2 class="visually-hidden">Navigation</h2>
+
                     <ol>
                         @foreach($blocs as $b)
-                        <li><a href="?bloc={{$b->id}}" class="nav_link @if($b->id == $bloc_id) nav_focused @endif">{{$b->bloc}}</a></li>
-
+                        <li><a href="/?bloc={{$b->id}}" class="nav_link @if($b->id == $bloc_id) nav_focused @endif">{{$b->bloc}}</a></li>
                         @endforeach
                     </ol>
                 </nav>
@@ -70,7 +71,7 @@
                     @if ($booksOrder)
 
                     <div class="order_box">
-                        <p class="info">Il y a //Cedric// livre dans votre commande.</p>
+                        <p class="info">Il y a {{ $order->bookOrders->count() }} livre dans votre commande.</p>
                         <p class="prix">Prix :  {{ $order->total }}€</p>
 
 
@@ -83,6 +84,13 @@
                         <p class="no_feedback_p">Vous n’avez pas encore ajouter de livre à votre commande.</p>
                     @endif
                 </section>
+
+                @if (Auth::user()->is_admin == 1)
+                <div class="nav_admin_btn">
+                    <a href="{{ route('admin') }}">Acceder a l'interface de commande</a>
+                </div>
+                @endif
+
             </div>
 
         </header>

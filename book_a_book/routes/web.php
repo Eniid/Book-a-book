@@ -36,18 +36,24 @@ use Illuminate\Support\Facades\Route;
 
 
 //* Admin
-    Route::get('/admin', [AdminIndexController::class, 'read']);
-    Route::get('/admin/students', [StudentsController::class, 'index']);
-    Route::get('/admin/books', [BooksController::class, 'read']);
+    Route::get('/admin', [StudentsController::class, 'index'])->name('admin');
+    Route::get('/admin/stock', [AdminIndexController::class, 'read'])->name('admin_stock');
+    Route::get('/admin/books', [BooksController::class, 'read'])->name('admin_book');
+
     Route::post('/admin/books', [BooksController::class, 'store']);
 
     Route::get('/admin/student/{user:id}', [StudentsController::class, 'read']);
 
     Route::get('/admin/books/edit/{book:id}', [BooksController::class, 'edit']);
     Route::patch('/admin/books', [BooksController::class, 'update']);
-    Route::post('/admin/books/del', [BooksController::class, 'del']);
+    Route::post('/admin/del/book', [BooksController::class, 'del']);
 
     Route::get('/admin/books/new', [BooksController::class, 'create']);
+
+
+    Route::post('/stock/edit', [BooksController::class, 'stock']);
+
+
 
 
     //Les routes de modification des Ordres :D
@@ -64,6 +70,9 @@ use Illuminate\Support\Facades\Route;
 
 //* PROFIL
     Route::get('/profil', [UserController::class, 'index'])->middleware('auth');
+    Route::get('/admin/profil', [UserController::class, 'adminp'])->middleware('auth');
+
+
     Route::post('/profil', [UserController::class, 'update'])->middleware('auth');
 
 

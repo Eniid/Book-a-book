@@ -18,11 +18,36 @@ class StudentsController extends Controller
         return view('admin.students', compact('students', 'inProcess'));
     }
 
+
+
+
     public function read(User $user){
 
         $inProcess = Order::where('statu_id', '<>', '1')->where('statu_id', '<>', '5')->count();
 
-        return view('admin.student', compact('user', 'inProcess'));
+        $oldOrders = Order::withoutGlobalScope(ArchivedScope::class)->where('user_id', $user->id)->with('books')->get();
+
+
+        $user->load('orders', 'orders.books', 'orders.statu');
+
+            foreach($user->orders as $order){
+                    $order->quantities = $order->books->countBy(function ($item) {
+                        return $item->id;
+                    });
+
+
+                //$order->books->unique('id');
+            }
+
+
+
+        //dd($user);
+
+
+        //$user_order = User::where('id', $user->id)->with('orders')->first();
+
+
+        return view('admin.student', compact('user', 'inProcess', 'oldOrders'));
     }
 
 }

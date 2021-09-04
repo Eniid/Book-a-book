@@ -1,5 +1,5 @@
 
-   @extends('_layout.admin')
+   @extends('student_cart.admin')
 
 
 <!-- Titre de la page -->

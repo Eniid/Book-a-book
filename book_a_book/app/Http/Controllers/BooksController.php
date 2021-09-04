@@ -20,7 +20,7 @@ class BooksController extends Controller
 
 
         return view('admin.books', compact('books', 'blocs', 'inProcess'));
-    }
+}
 
 
 
@@ -206,16 +206,41 @@ class BooksController extends Controller
 
 
 
-    public function del(Request $request, Book $book){
-
-
+    public function del(Request $request){
 
         $bookDel = Book::where('id', request('del_id'));
         $bookDel->delete();
 
-
         return redirect('/admin/books');
     }
+
+
+
+
+
+    public function stock(Request $request){
+
+
+
+        $book = Book::where('id', request('book_id'))->first();
+
+        if($request->stock){
+            $validations['stock']='min:0';
+        }
+
+        //dd($book);
+
+        $book -> stock = request('stock') ?? 0 ;
+        $book ->save();
+
+
+        return redirect('/admin/stock');;
+    }
+
+
+
+
+
 
 
 }

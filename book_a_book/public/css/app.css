@@ -60,7 +60,7 @@ body {
 
 h1 {
   text-align: center;
-  margin: 2.5rem 0 2.5rem 0;
+  margin: 2rem 0 1rem 0;
 }
 
 h2 {
@@ -193,6 +193,20 @@ a {
 
 .hcta {
   background-color: #aa0202;
+}
+
+.form-input {
+  border: none;
+  border-bottom: #F7F7F7 solid 2px;
+  outline: none;
+  padding: 0.5rem 1rem;
+  margin: 0.7rem 0 1.2rem 0;
+  display: block;
+  margin-right: 2rem;
+}
+
+.form-input:focus {
+  border-bottom: #aa0202 solid 2px;
 }
 
 @media screen and (min-width: 900px) {
@@ -353,6 +367,10 @@ nav li a {
   position: relative;
 }
 
+.nav_admin_btn {
+  text-align: center;
+}
+
 .main_form.profil_form {
   width: auto;
 }
@@ -455,6 +473,7 @@ nav li a {
   display: none;
   justify-content: center;
   align-items: center;
+  z-index: 10000000000;
 }
 
 .valid_box_in {
@@ -647,6 +666,46 @@ textarea:focus {
     font-size: 1.6rem;
   }
 }
+.profil_img {
+  height: 200px;
+}
+
+.book_profil {
+  height: 150px;
+}
+
+.books_list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.name_forprofil {
+  text-align: center;
+  margin: auto;
+  margin: 1rem;
+  font-size: 1.5rem;
+}
+
+.profil_info_overall-box {
+  background-color: #fff;
+  padding: 4rem;
+  max-width: 1025px;
+  justify-content: space-around;
+  box-shadow: 0px 2px 6px 0px #c2c2c2;
+}
+.profil_info_overall-box h2 {
+  font-size: 1.7rem;
+}
+
+.profil_order {
+  margin-bottom: 4rem;
+}
+
+.h3like {
+  font-size: 1.4rem;
+  padding: 1rem 0 0.7rem 0;
+}
+
 .book_component_link {
   position: absolute;
   top: -1rem;
@@ -916,6 +975,7 @@ textarea:focus {
   background-color: white;
   padding: 3rem;
   box-shadow: 0px 2px 6px 0px #c2c2c2;
+  min-height: 212px;
 }
 
 .students_user_name {
@@ -1085,4 +1145,92 @@ textarea:focus {
 
 .new_year_btn {
   margin: 3rem;
+}
+
+@media screen and (max-width: 900px) {
+  img.students_pp {
+    position: relative;
+    top: 2.5rem;
+    right: auto;
+  }
+}
+.buyer_pp {
+  height: 3rem;
+  width: 3rem;
+  border-radius: 5rem;
+}
+
+.buyerprofil_toggle {
+  display: none;
+}
+
+.buyerprofil_box {
+  margin-right: 1rem;
+}
+
+.buyerprofil_box:hover {
+  position: relative;
+}
+.buyerprofil_box:hover .buyerprofil_toggle {
+  display: block;
+  background-color: #fff;
+  box-shadow: 0px 2px 6px 0px #a8a8a8;
+  position: absolute;
+  /* bottom: -5px; */
+  padding: 0.7rem;
+  color: grey;
+  text-align: center;
+}
+
+.ordered_by {
+  display: flex;
+}
+
+.book_around {
+  position: relative;
+  margin: 1rem;
+}
+
+.book_info {
+  display: none;
+}
+
+.book_around:hover {
+  position: relative;
+}
+.book_around:hover .book_info {
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.719);
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+  font-size: 0.7rem;
+  line-height: 0.1rem;
+  margin: 0;
+  padding: 0.5rem;
+}
+.book_around:hover .info {
+  font-weight: lighter;
+}
+.book_around:hover .title {
+  font-size: 0.8rem;
+  margin-bottom: 0.6rem;
+}
+
+.order-list_order-stat {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+.student-order-contener {
+  display: flex;
+  overflow-x: scroll;
+  width: 100%;
+  background: #eae9e9;
 }

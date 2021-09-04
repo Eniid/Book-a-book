@@ -3,7 +3,6 @@
 <!-- Titre de la page -->
 
 
-
 <!-- Contenu de la page -->
 
 @section('content')
@@ -44,7 +43,7 @@
                             " alt="">
                         </div>
                         <div class="book_component_img">
-                            <h3 class="book_title">{{$book->title}}</h3>
+                            <h4 class="book_title h3like">{{$book->title}}</h4>
                             <span class="book_autor">{{$book->author}}</span> |
                             <span class="book_edition">{{$book->edition}}</span>
                             <p class="book_shcool_info">Le livre est facultatif pour le coure de {{$book->class}} du proffesseur {{$book->teacher}}..</p>

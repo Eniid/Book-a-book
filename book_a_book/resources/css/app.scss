@@ -294,6 +294,7 @@
     background-color: white;
     padding: 3rem;
     box-shadow: 0px 2px 6px 0px #c2c2c2;
+    min-height: 212px;
   }
 
   .students_user_name {
@@ -494,4 +495,106 @@ textarea {
 
 .new_year_btn {
     margin: 3rem;
+}
+
+
+@media screen and (max-width: 900px){
+    img.students_pp {
+        position: relative;
+        top: 2.5rem;
+        right: auto;
+}
+}
+
+
+.buyer_pp {
+    height: 3rem;
+    width: 3rem;
+    border-radius: 5rem;
+}
+
+.buyerprofil_toggle {
+    display: none;
+}
+
+.buyerprofil_box {
+    margin-right: 1rem ;
+
+}
+
+.buyerprofil_box:hover {
+    position: relative;
+    .buyerprofil_toggle {
+        display: block;
+        background-color: #fff;
+        box-shadow: 0px 2px 6px 0px #a8a8a8;
+        position: absolute;
+        /* bottom: -5px; */
+        padding: .7rem;
+        color: grey;
+        text-align: center;
+    }
+}
+.ordered_by {
+    display: flex;
+    //overflow-x: scroll;
+}
+
+
+
+.book_around{
+    position: relative;
+    margin: 1rem;
+}
+
+.book_info {
+    display: none;
+}
+
+.book_around:hover{
+    position: relative;
+    .book_info {
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        background: rgba(0, 0, 0, 0.719);
+        color: #fff;
+        text-align: center;
+        font-weight: bold;
+        font-size: .7rem;
+        line-height: .1rem;
+        margin: 0;
+        padding: .5rem;
+    }
+
+    .info {
+        font-weight: lighter;
+    }
+
+    .title{
+        font-size: .8rem;
+        margin-bottom: .6rem;
+
+    }
+}
+
+
+
+
+
+.order-list_order-stat {
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 1rem;
+}
+
+
+.student-order-contener {
+    display: flex;
+    overflow-x: scroll;
+    width: 100%;
+    background: #eae9e9;
 }

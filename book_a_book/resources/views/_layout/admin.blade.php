@@ -41,7 +41,7 @@
             " alt="" class="pp">
                 <div class="user_infos">
                     <span class="user_name">{{ Auth::user()->name }}</span>
-                    <a href="/profil" class="user_profil">profil</a>
+                    <a href="/admin/profil" class="user_profil">profil</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" >
                         @csrf
                         <input type="submit" class="deco" value="Deconexion">
@@ -58,15 +58,16 @@
             <div class="mobile">
                 <!-- Le Menu  -->
                 <nav class="nav">
+                    <h2 class="visually-hidden">Navigation</h2>
                     <ol>
-                        <li><a href="/admin/students" class="nav_link
-                            @if (Request::path() == 'admin/students')
+                        <li><a href="/admin" class="nav_link
+                            @if (Request::path() == 'admin')
                             nav_focused
                             @endif
                             ">Commandes</a>
                         </li>
-                        <li><a href="/admin" class="nav_link
-                            @if (Request::path() == 'admin')
+                        <li><a href="/admin/stock" class="nav_link
+                            @if (Request::path() == 'admin/stock')
                             nav_focused
                             @endif
                             ">Stokes</a>
@@ -86,6 +87,10 @@
                     <p class="no_feedback_p"><b>{{ $inProcess }}</b> commendes sont en cours</p>
                     <p class="no_feedback_p"><b>10</b> on été payer</p>
                 </section>
+
+                <div class="nav_admin_btn">
+                    <a href="{{ route('student_home') }}">Acceder a l'interface de commande</a>
+                </div>
             </div>
 
         </header>
