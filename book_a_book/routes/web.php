@@ -54,6 +54,7 @@ use Illuminate\Support\Facades\Route;
     Route::post('/stock/edit', [BooksController::class, 'stock']);
 
 
+    Route::post('/student/com', [StudentsController::class, 'com']);
 
 
     //Les routes de modification des Ordres :D

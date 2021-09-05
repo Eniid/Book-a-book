@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('img')->nullable();
             $table->string('be')->nullable();
             $table->text('visit_time')->nullable();
+            $table->text('commentaire')->nullable();
             $table->boolean('is_admin')->default(false);
             $table->rememberToken();
             $table->timestamps();

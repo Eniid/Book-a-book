@@ -33,6 +33,15 @@
                     <p>{{$user->email}}</p>
                 </div>
 
+                <form action="/student/com" method="post" class="profil_com">
+                    @csrf
+                    <input type="hidden" value="{{ $user->id }}" name="user_id">
+                    <label for="com" class="">Commentaire</label>
+                    <textarea name="com" id="com" class="form-control">{{ $user->commentaire }}</textarea>
+                    <button class="cta hcta">Sauver</button>
+                </form>
+
+
 
 
 

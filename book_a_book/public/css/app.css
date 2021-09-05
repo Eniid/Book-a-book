@@ -701,6 +701,18 @@ textarea:focus {
   margin-bottom: 4rem;
 }
 
+.profil_com {
+  text-align: center;
+  margin: 2rem;
+}
+.profil_com .cta {
+  margin: auto;
+}
+.profil_com textarea {
+  height: 5rem;
+  width: 90%;
+}
+
 .h3like {
   font-size: 1.4rem;
   padding: 1rem 0 0.7rem 0;

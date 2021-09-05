@@ -35,3 +35,15 @@
 .profil_order {
     margin-bottom: 4rem;
 }
+
+.profil_com {
+    text-align: center;
+    margin: 2rem;
+    .cta {
+        margin: auto;
+    }
+    textarea{
+        height: 5rem;
+        width: 90%;
+    }
+}

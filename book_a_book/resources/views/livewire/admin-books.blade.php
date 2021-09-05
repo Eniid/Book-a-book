@@ -53,7 +53,6 @@
                                 @else
                                     facultatif
                                 @endif
-
                                 pour le coure de {{$book->class}} du proffesseur {{$book->teacher}}.</p>
                             <span class="price">{{$book->school_price}}€</span ><span class="old_price">{{$book->store_price}}€</span>
                             <a class="add book_component_add" href="/admin/books/edit/{{$book->id}}"><img src="{{ asset('../img/edit.svg') }}" alt="" class="edit_book"></a>

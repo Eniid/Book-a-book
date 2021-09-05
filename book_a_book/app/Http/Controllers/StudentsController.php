@@ -50,5 +50,19 @@ class StudentsController extends Controller
         return view('admin.student', compact('user', 'inProcess', 'oldOrders'));
     }
 
+
+
+    public function com(Request $request){
+
+        $students = User::where('id', request('user_id'))->first();
+
+        $students->commentaire = request('com');
+        $students->save();
+
+
+        return redirect('/admin/student/'.request('user_id'));
+    }
+
+
 }
 
