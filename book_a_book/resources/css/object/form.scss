@@ -14,3 +14,51 @@
   .form-input:focus {
     border-bottom: #aa0202 solid 2px;
   }
+
+
+
+
+
+
+@media screen and (max-width: 1400px) {
+
+    body .main_form {
+        display: block;
+    }
+
+
+}
+
+
+
+
+@media screen and (max-width: 1400px) {
+    .book_from_contener {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .cover_contener {
+        position: relative;
+        height: 14rem;
+        border: 1px solid black;
+        z-index: -1;
+
+    }
+
+}
+
+
+
+.form_btn-box {
+        position: relative;
+        /* top: -2rem; */
+        /* right: -19rem; */
+        width: 100%;
+        text-align: center;
+}
+
+.book_cta {
+    position: relative;
+    top: -2rem;
+}

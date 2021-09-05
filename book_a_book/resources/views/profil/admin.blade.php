@@ -13,7 +13,7 @@
 
    <!-- Titre de la page -->
    @section('title')
-   Profil:
+   Profil :
    @endsection
 
 
@@ -22,7 +22,7 @@
 
 
    <div class="profil-edit_box">
-       <form action="/profil" method="post" class="main_form profil_form" enctype="multipart/form-data">
+       <form action="/admin/profil" method="post" class="main_form profil_form" enctype="multipart/form-data">
            <div class="">
 
                    @csrf

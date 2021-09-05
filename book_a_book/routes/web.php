@@ -75,6 +75,7 @@ use Illuminate\Support\Facades\Route;
 
 
     Route::post('/profil', [UserController::class, 'update'])->middleware('auth');
+    Route::post('/admin/profil', [UserController::class, 'adminupdate'])->middleware('auth');
 
 
 

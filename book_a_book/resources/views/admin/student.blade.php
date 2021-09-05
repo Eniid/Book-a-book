@@ -3,7 +3,9 @@
 
 <!-- Titre de la page -->
 
-
+@section('title')
+{{ $user->name }} :
+@endsection
 
 <!-- Contenu de la page -->
 @section('content')
@@ -50,8 +52,8 @@
                     <h2>Comande en cours</h2>
                     <div>
                         @foreach($user->orders as $order)
-                        <p>Création de la commande : {{ $order->created_at->diffForHumans() }}</p>
-                        <p>Changement de statu : {{ $order->updated_at->diffForHumans() }}</p>
+                        <p title="{{ $order->created_at->toDateTimeString() }}">Création de la commande : {{ $order->created_at->diffForHumans() }}</p>
+                        <p title="{{ $order->updated_at->toDateTimeString()}}">Changement de statu : {{ $order->updated_at->diffForHumans() }}</p>
 
 
 
@@ -232,9 +234,9 @@
                         Anciences commandes
                     </h2>
                    @foreach ($oldOrders as $order)
-                        <section>
-                            <h3>Commande de //annnée//</h3>
-                            <p>{{ $order->updated_at->diffForHumans() }}</p>
+                        <section class="archived_order">
+                            <h3>Commande de {{ $order->updated_at->year }}</h3>
+                            <p>{{ $order->updated_at->toFormattedDateString() }}</p>
                             <div class="books_list">
                         @foreach ($order->books as $book)
                             <div>

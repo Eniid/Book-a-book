@@ -5,7 +5,9 @@
 <!-- Titre de la page -->
 
 
-
+@section('title')
+Profil :
+@endsection
 <!-- Contenu de la page -->
 @section('content')
 

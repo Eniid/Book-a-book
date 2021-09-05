@@ -2,6 +2,9 @@
 
 <!-- Titre de la page -->
 
+@section('title')
+Pannier :
+@endsection
 
 
 <!-- Contenu de la page -->
@@ -19,7 +22,7 @@
 
 
             <div class="display_books">
-                @foreach ($order->books as $book )
+                @foreach ($order_display->books as $book )
 
                 <section class="book_component_store">
                     <div class="book_component_img_contener">

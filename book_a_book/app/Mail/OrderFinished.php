@@ -11,14 +11,20 @@ class OrderFinished extends Mailable
 {
     use Queueable, SerializesModels;
 
+
+    public $admin;
+    public $user;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($user, $admin)
     {
-        //
+        $this->user= $user;
+        $this->admin= $admin;
+
     }
 
     /**

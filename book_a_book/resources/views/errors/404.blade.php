@@ -3,7 +3,7 @@
 <!-- Titre de la page -->
 
 @section('title')
-ERROR :
+ERROR 404 :
 @endsection
 
 <!-- Contenu de la page -->

@@ -37,7 +37,7 @@
                 @endif
             " alt="" class="pp">
             <div class="user_infos">
-                <span class="user_name">Xavier Spirler</span>
+                <span class="user_name">{{ Auth::user()->name }}</span>
                 <a href="/profil" class="user_profil">profil</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" >
                     @csrf

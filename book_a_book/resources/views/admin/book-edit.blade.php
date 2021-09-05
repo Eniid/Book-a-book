@@ -3,7 +3,7 @@
 <!-- Titre de la page -->
 
 @section('title')
-Editer om du livre :
+Editer livre :
 @endsection
 
 <!-- Contenu de la page -->
@@ -90,7 +90,10 @@ Editer om du livre :
                     </div>
 
                 </div>
-                <input type="submit" name="" id="" class="hcta cta form_cta book_cta" value="Sauvgarder">
+                <div class="form_btn-box">
+                    <input type="submit" name="" id="" class="hcta cta form_cta book_cta" value="Sauvgarder">
+                </div>
+
             </form>
 
 

@@ -3,7 +3,7 @@
 <!-- Titre de la page -->
 
 @section('title')
-Admin :
+Stoques :
 @endsection
 
 <!-- Contenu de la page -->

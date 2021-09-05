@@ -28,7 +28,7 @@ class OrderController extends Controller
 
         // Envoyer un E-Mail a l'étudiant pour l'informer du changement de statu de la commande
 
-        Mail::to($user->email)->send(new OrderPayed());
+        Mail::to($user->email)->send(new OrderPayed($user));
 
         $order->statu_id = 3;
         $order->save();
@@ -41,8 +41,9 @@ class OrderController extends Controller
 
         $order = Order::where('user_id', request('user_id'))->with('books')->first();
         $user = User::where('id', request('user_id'))->first();
+        $admin = User::where('is_admin', 1)->first();
 
-        Mail::to($user->email)->send(new OrderAvalible());
+        Mail::to($user->email)->send(new OrderAvalible($user, $admin));
 
 
         //dd($order);
@@ -63,8 +64,10 @@ class OrderController extends Controller
 
         $order = Order::where('user_id', request('user_id'))->first();
         $user = User::where('id', request('user_id'))->first();
+        $admin = User::where('is_admin', 1)->first();
 
-        Mail::to($user->email)->send(new OrderFinished());
+
+        Mail::to($user->email)->send(new OrderFinished($user, $admin));
 
 
         // Envoyer un E-Mail a l'étudiant pour l'informer du changement de statu de la commande

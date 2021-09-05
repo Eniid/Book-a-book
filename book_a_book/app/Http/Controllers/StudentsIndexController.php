@@ -103,14 +103,17 @@ class StudentsIndexController extends Controller
     }
 
 
-
     public function view(Request $request){
         $blocs = Bloc::has('books')->with('books')->get();
         $bloc_id = request('bloc')??1;
         $bloc = $blocs->where('id', $bloc_id)->first();
 
-        $order = Order::where('user_id', Auth::user()->id)->where('archived', 0)->with('books')->first();
-
+        $order_display = Order::where('user_id', Auth::user()->id)->where('archived', 0)->with('books')->first();
+        $order = Order::where('user_id', Auth::user()->id)->with([
+            'books' => function ($q) {
+                $q->groupBy('books.id');
+            },
+        ])->first();
 
 
         $booksOrder = false;
@@ -131,12 +134,8 @@ class StudentsIndexController extends Controller
 
 
 
-        return view('student.cart', compact('blocs', 'bloc', 'bloc_id', 'order', 'booksOrder'));
+        return view('student.cart', compact('blocs', 'bloc', 'bloc_id', 'order_display', 'order', 'booksOrder'));
     }
-
-
-
-
 
 
 
@@ -160,11 +159,13 @@ class StudentsIndexController extends Controller
     public function valid(Request $request){
 
         $curent_user_id = Auth::user()->id;
+        $curent_user = Auth::user();
         $order = Order::where('user_id', $curent_user_id)->first();
 
 
         $admin = User::where('is_admin', '1')->first();
-        Mail::to($admin->email)->send(new OrderMade());
+
+        Mail::to($admin->email)->send(new OrderMade($curent_user, $admin));
 
 
         $order->statu_id = 2;
@@ -182,7 +183,14 @@ class StudentsIndexController extends Controller
         $bloc = $blocs->where('id', $bloc_id)->first();
         $admin = User::where('is_admin', '1')->first();
 
-        $order = Order::where('user_id', Auth::user()->id)->where('archived', 0)->with('books')->with('statu')->first();
+        //$order = Order::where('user_id', Auth::user()->id)->where('archived', 0)->with('books')->with('statu')->first();
+        $order_display = Order::where('user_id', Auth::user()->id)->where('archived', 0)->with('books')->first();
+        $order = Order::where('user_id', Auth::user()->id)->with([
+            'books' => function ($q) {
+                $q->groupBy('books.id');
+            },
+        ])->first();
+
 
         $booksOrder = false;
         if($order){
@@ -200,7 +208,7 @@ class StudentsIndexController extends Controller
 
 
 
-        return view('student.order_stat', compact('order', 'admin', 'blocs', 'bloc_id', 'booksOrder'));
+        return view('student.order_stat', compact('order', 'order_display', 'admin', 'blocs', 'bloc_id', 'booksOrder'));
     }
 
 

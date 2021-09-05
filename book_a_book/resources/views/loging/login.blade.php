@@ -3,7 +3,7 @@
 <!-- Titre de la page -->
 
 @section('title')
-register
+register :
 @endsection
 
 

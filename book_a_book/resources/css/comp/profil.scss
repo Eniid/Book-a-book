@@ -47,3 +47,14 @@
         width: 90%;
     }
 }
+
+
+.archived_order{
+    margin-bottom: 2rem;
+    h3{
+        padding: 1rem 0 .1rem 0;
+    }
+    img{
+        filter: grayscale(80%);
+    }
+}

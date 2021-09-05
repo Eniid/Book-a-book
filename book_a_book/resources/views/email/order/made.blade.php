@@ -1,6 +1,6 @@
 <div>
-    <p>Bonjour Name,</p>
-    <p>// Nom de l'élève // vient de passer une commande. Retrouvez sa demande sur <a href="#">Book a Book</a> </p>
+    <p>Bonjour {{ $admin->name }},</p>
+    <p>{{ $curent_user->name }} du {{ $curent_user->group }} vient de passer une commande. Retrouvez sa demande sur <a href="http://book-a-book.celine-everaert.com/admin">Book a Book</a> </p>
 
     <p>Bonne journée,</p>
     <p>Book a Book</p>

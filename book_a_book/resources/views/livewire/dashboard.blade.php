@@ -54,8 +54,12 @@
                 <div class="book_component_img">
                     <h3>{{ $book->title }}</h3>
                     <div class="students_user_name_contener">
-                        <p>Stock : {{ $book->stock }}</p>
-                        <p>Commandes : {{ $book->orders_count }}</p>
+                        <p>Stock : {{ $book->stock }} | Commandes : {{ $book->orders_count }}</p>
+                        @if ($book->stock >= $book->orders_count)
+                            <p class="good">Le stoque est suffisant</p>
+                        @else
+                            <p class="alert">Il manque {{$book->orders_count - $book->stock }} exemplaires</p>
+                        @endif
                     </div>
 
                     <div class="ordered_by">
@@ -75,7 +79,11 @@
                                 <div class="buyerprofil_toggle">
                                     <p>{{ $order->user->name }}</p>
                                     <p class="group">{{ $order->user->group }}</p>
-                                    <p class="group">{{ $order->statu->status}}</p>
+                                    @if ($order->statu->id == 3)
+                                        <p class="good">payer</p>
+                                    @else
+                                        <p class="alert">Impayer</p>
+                                    @endif
                                 </div>
 
                             </div>

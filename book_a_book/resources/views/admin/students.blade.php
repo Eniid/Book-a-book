@@ -3,7 +3,7 @@
 <!-- Titre de la page -->
 
 @section('title')
-Étudiants :
+Admin :
 @endsection
 
 <!-- Contenu de la page -->

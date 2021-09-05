@@ -11,14 +11,20 @@ class OrderAvalible extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $user;
+    public $admin;
+
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($user, $admin)
     {
-        //
+        $this->user= $user;
+        $this->admin= $admin;
+
     }
 
     /**

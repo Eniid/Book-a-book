@@ -1,0 +1,43 @@
+.ordered_by {
+    display: flex;
+    flex-wrap: wrap;
+    height: 8rem;
+    overflow: hidden;
+}
+
+
+
+.book_component_img {
+    background-color: white;
+    width: 192px;
+    height: 235px;
+    padding: 1.1rem 3.5rem 2rem;
+    margin-left: 4rem;
+    box-shadow: 0px 2px 6px 0px #a8a8a8;
+
+    .alert {
+        color: #aa0102;
+      }
+
+
+      .good {
+        color: green;
+      }
+
+
+  }
+
+
+  .book_component_img:hover {
+    min-height: 235px;
+    height: auto;
+
+    .ordered_by {
+
+        height: auto;
+        overflow:  visible;
+
+    }
+  }
+
+
