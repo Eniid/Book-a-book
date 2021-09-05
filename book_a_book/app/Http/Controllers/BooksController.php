@@ -6,9 +6,12 @@ use App\Models\Bloc;
 use App\Models\BlocBooks;
 use App\Models\Book;
 use App\Models\Order;
+use App\Models\BookOrder;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
+
 
 use Image;
 
@@ -19,9 +22,13 @@ class BooksController extends Controller
         $books = Book::all();
         $blocs = Bloc::all();
         $inProcess = Order::where('statu_id', '<>', '1')->where('statu_id', '<>', '5')->count();
+        $orderd = Order::where('statu_id', '=', '2')->count();
+        $payed = Order::where('statu_id', '=', '3')->count();
+        $finished = Order::where('statu_id', '=', '5')->count();
 
 
-        return view('admin.books', compact('books', 'blocs', 'inProcess'));
+
+        return view('admin.books', compact('books', 'blocs', 'inProcess', 'orderd', 'payed', 'finished'));
 }
 
 
@@ -35,10 +42,13 @@ class BooksController extends Controller
         $book->with('orders');
         $blocs = Bloc::all();
         $inProcess = Order::where('statu_id', '<>', '1')->where('statu_id', '<>', '5')->count();
+        $orderd = Order::where('statu_id', '=', '2')->count();
+        $payed = Order::where('statu_id', '=', '3')->count();
+        $finished = Order::where('statu_id', '=', '5')->count();
 
 
 
-    return view('admin.book-edit', compact('books', 'blocs', 'book', 'inProcess'));
+    return view('admin.book-edit', compact('books', 'blocs', 'book', 'inProcess', 'orderd', 'payed', 'finished'));
 }
 
 
@@ -148,10 +158,13 @@ class BooksController extends Controller
         $books = Book::all();
         $blocs = Bloc::all();
         $inProcess = Order::where('statu_id', '<>', '1')->where('statu_id', '<>', '5')->count();
+        $orderd = Order::where('statu_id', '=', '2')->count();
+        $payed = Order::where('statu_id', '=', '3')->count();
+        $finished = Order::where('statu_id', '=', '5')->count();
 
 
 
-        return view('admin.book-create', compact('books', 'blocs', 'inProcess'));
+        return view('admin.book-create', compact('books', 'blocs', 'inProcess', 'orderd', 'payed', 'finished'));
     }
 
     // Crer un livre !!! :D
@@ -218,6 +231,10 @@ class BooksController extends Controller
 
 
     public function del(Request $request){
+
+
+        $bookRelDel = BookOrder::where('book_id', request('del_id'));
+        $bookRelDel->delete();
 
         $bookDel = Book::where('id', request('del_id'));
         $bookDel->delete();

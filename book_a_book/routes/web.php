@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 
 
 //* Student
-    Route::get('/', [StudentsIndexController::class, 'index'])->middleware('auth')->name('student_home') ;
+    Route::get('/', [StudentsIndexController::class, 'index'])->middleware('orderd')->name('student_home') ;
     Route::post('/plus', [StudentsIndexController::class, 'plus'])->middleware('auth');
     Route::post('/moins', [StudentsIndexController::class, 'moins'])->middleware('auth');
 
@@ -36,15 +36,15 @@ use Illuminate\Support\Facades\Route;
 
 
 //* Admin
-    Route::get('/admin', [StudentsController::class, 'index'])->name('admin');
-    Route::get('/admin/stock', [AdminIndexController::class, 'read'])->name('admin_stock');
-    Route::get('/admin/books', [BooksController::class, 'read'])->name('admin_book');
+    Route::get('/admin', [StudentsController::class, 'index'])->name('admin')->middleware('admin');
+    Route::get('/admin/stock', [AdminIndexController::class, 'read'])->name('admin_stock')->middleware('admin');
+    Route::get('/admin/books', [BooksController::class, 'read'])->name('admin_book')->middleware('admin');
 
     Route::post('/admin/books', [BooksController::class, 'store']);
 
-    Route::get('/admin/student/{user:id}', [StudentsController::class, 'read']);
+    Route::get('/admin/student/{user:id}', [StudentsController::class, 'read'])->middleware('admin');
 
-    Route::get('/admin/books/edit/{book:id}', [BooksController::class, 'edit']);
+    Route::get('/admin/books/edit/{book:id}', [BooksController::class, 'edit'])->middleware('admin');
     Route::patch('/admin/books', [BooksController::class, 'update']);
     Route::post('/admin/del/book', [BooksController::class, 'del']);
 

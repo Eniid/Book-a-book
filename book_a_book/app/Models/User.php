@@ -36,6 +36,15 @@ class User extends Authenticatable
         return $this->order()->belongsTo(Statu::class, 'statu_id');
     }
 
+
+    public function GethasOrderAttribute()
+    {
+        return count($this->orders->where('statu_id', '!=', 1));
+
+    }
+
+
+
     /**
      * The attributes that should be hidden for arrays.
      *

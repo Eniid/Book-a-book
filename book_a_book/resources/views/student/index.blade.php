@@ -3,7 +3,6 @@
 <!-- Titre de la page -->
 
 
-
 <!-- Contenu de la page -->
 
 @section('content')

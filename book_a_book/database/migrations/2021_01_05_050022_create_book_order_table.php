@@ -15,8 +15,8 @@ class CreateBookOrderTable extends Migration
     {
         Schema::create('book_order', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('book_id')->constrained();
-            $table->foreignId('order_id')->constrained();
+            $table->foreignId('book_id')->onDelete('cascade')->constrained();
+            $table->foreignId('order_id')->onDelete('cascade')->constrained();
             $table->timestamps();
         });
     }

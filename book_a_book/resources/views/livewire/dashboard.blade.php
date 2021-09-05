@@ -16,7 +16,7 @@
 
 
         <label for="bloc">Trier par bloc</label>
-        <select wire:model="byBloc" class="filter_contener">
+        <select wire:model="byBloc" class="filter_contener" id="bloc">
             <option value="">Tout les blocs</option>
             @foreach($blocs as $bloc)
                 <option value="{{$bloc->id}}">{{$bloc->bloc}}</option>

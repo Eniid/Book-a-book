@@ -85,7 +85,8 @@
                 <section class="feedback">
                     <h2>Statistiques</h2>
                     <p class="no_feedback_p"><b>{{ $inProcess }}</b> commendes sont en cours</p>
-                    <p class="no_feedback_p"><b>10</b> on été payer</p>
+                    <p class="no_feedback_p"><b>{{ $orderd }}</b> en attente de payement</p>
+                    <p class="no_feedback_p"><b>{{ $finished }}</b> cloturée</p>
                 </section>
 
                 <div class="nav_admin_btn">

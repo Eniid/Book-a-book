@@ -13,9 +13,11 @@ class StudentsController extends Controller
 
         $students = User::all();
         $inProcess = Order::where('statu_id', '<>', '1')->where('statu_id', '<>', '5')->count();
+        $orderd = Order::where('statu_id', '=', '2')->count();
+        $payed = Order::where('statu_id', '=', '3')->count();
+        $finished = Order::where('statu_id', '=', '5')->count();
 
-
-        return view('admin.students', compact('students', 'inProcess'));
+        return view('admin.students', compact('students', 'inProcess', 'orderd', 'payed', 'finished'));
     }
 
 
@@ -24,6 +26,10 @@ class StudentsController extends Controller
     public function read(User $user){
 
         $inProcess = Order::where('statu_id', '<>', '1')->where('statu_id', '<>', '5')->count();
+        $orderd = Order::where('statu_id', '=', '2')->count();
+        $payed = Order::where('statu_id', '=', '3')->count();
+        $finished = Order::where('statu_id', '=', '5')->count();
+
 
         //$oldOrders = Order::withoutGlobalScope(ArchivedScope::class)->where('user_id', $user->id)->with('books')->get();
         $oldOrders = Order::withoutGlobalScope('pastOrders')->where('user_id', $user->id)->where('archived', true)->with('books')->get();
@@ -48,7 +54,7 @@ class StudentsController extends Controller
         //$user_order = User::where('id', $user->id)->with('orders')->first();
 
         //dd(Order::withoutGlobalScope('pastOrders')->get());
-        return view('admin.student', compact('user', 'inProcess', 'oldOrders'));
+        return view('admin.student', compact('user', 'inProcess', 'oldOrders', 'orderd', 'payed', 'finished'));
     }
 
 

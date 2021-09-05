@@ -45,7 +45,7 @@ Pannier :
                             @csrf
                             <input type="hidden" value="{{$book->id}}" name="book_id">
 
-                            <button href="#" class="cta hcta book_component_link">X</button>
+                            <button class="cta hcta book_component_link">X</button>
                         </form>
                     </div>
                 </section>

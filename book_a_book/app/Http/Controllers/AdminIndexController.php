@@ -17,10 +17,14 @@ class AdminIndexController extends Controller
         $books = Book::has('orders')->with('orders', 'orders.user', 'orders.statu')->get();
 
         $inProcess = Order::where('statu_id', '<>', '1')->where('statu_id', '<>', '5')->count();
+        $orderd = Order::where('statu_id', '=', '2')->count();
+        $payed = Order::where('statu_id', '=', '3')->count();
+        $finished = Order::where('statu_id', '=', '5')->count();
+
 
         //dd($books);
 
-        return view('admin.index', compact('blocs', 'books', 'inProcess'));
+        return view('admin.index', compact('blocs', 'books', 'inProcess', 'orderd', 'payed', 'finished' ));
     }
 
 }

@@ -63,6 +63,10 @@ class UserController extends Controller
         $bloc = $blocs->where('id', $bloc_id)->first();
 
         $inProcess = Order::where('statu_id', '<>', '1')->where('statu_id', '<>', '5')->count();
+        $orderd = Order::where('statu_id', '=', '2')->count();
+        $payed = Order::where('statu_id', '=', '3')->count();
+        $finished = Order::where('statu_id', '=', '5')->count();
+
 
         $order = Order::where('user_id', Auth::user()->id)->with([
             'books' => function ($q) {
@@ -85,7 +89,7 @@ class UserController extends Controller
         }
 
 
-        return view('profil.admin', compact('blocs', 'bloc', 'bloc_id', 'order', 'booksOrder', 'inProcess'));
+        return view('profil.admin', compact('blocs', 'bloc', 'bloc_id', 'order', 'booksOrder', 'inProcess', 'orderd', 'payed', 'finished'));
     }
 
 
