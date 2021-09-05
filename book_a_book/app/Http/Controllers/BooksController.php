@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Facades\Hash;
 
+use Image;
+
 
 class BooksController extends Controller
 {
@@ -177,13 +179,22 @@ class BooksController extends Controller
         );
 
 
-        $fileName = urlencode($request->img->getClientOriginalName());
-        $fileNameFull = time() . '-' . $fileName;
-        $path = 'img/cover/' . $fileNameFull;
-        $request->img->move('img/cover', $fileNameFull);
+        // $fileName = urlencode($request->img->getClientOriginalName());
+        // $fileNameFull = time() . '-' . $fileName;
+        // $path = 'img/cover/' . $fileNameFull;
+        // $request->img->move('img/cover', $fileNameFull);
 
 
-        $book -> img = $path;
+
+        $img = Image::make($request->img)->resize(null, 250, function ($constraint) {
+            $constraint->aspectRatio();
+         });
+         $imgPath = 'img/cover' . time() . '-' . urlencode($request->img->getClientOriginalName());
+         $img->save($imgPath, 70);
+
+
+
+        $book -> img = $imgPath;
 
         $book -> title = request('title');
         $book -> author = request('auth');

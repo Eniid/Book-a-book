@@ -46,6 +46,7 @@ class StudentsController extends Controller
 
         //$user_order = User::where('id', $user->id)->with('orders')->first();
 
+        dd(Order::withoutGlobalScope(ArchivedScope::class)->get());
 
         return view('admin.student', compact('user', 'inProcess', 'oldOrders'));
     }
