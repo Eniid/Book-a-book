@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Scopes\ArchivedScope;
 
+
+use Illuminate\Database\Eloquent\Builder;
+
+
 class Order extends Model
 {
 
@@ -19,7 +23,10 @@ class Order extends Model
 
     protected static function booted()
     {
-        static::addGlobalScope(new ArchivedScope);
+        //static::addGlobalScope(new ArchivedScope);
+        static::addGlobalScope('pastOrders', function (Builder $builder) {
+            $builder->where('archived', '!=', true);
+        });
     }
 
     public function statu (){

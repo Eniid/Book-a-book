@@ -50,6 +50,8 @@
                     <h2>Comande en cours</h2>
                     <div>
                         @foreach($user->orders as $order)
+                        <p>Création de la commande : {{ $order->created_at->diffForHumans() }}</p>
+                        <p>Changement de statu : {{ $order->updated_at->diffForHumans() }}</p>
 
 
 
@@ -69,6 +71,9 @@
                                     {{ asset('../img/book_cover.jpg') }}
                                 @endif
                                     " alt="{{ $book->name }} cover" title="{{ $book->name }}" class="student-order-cover"> --}}
+
+
+
                                         <div class="book_around">
                                             <img src="
                                             @if ($book->img)
@@ -226,8 +231,67 @@
                     <h2>
                         Anciences commandes
                     </h2>
+                   @foreach ($oldOrders as $order)
+                        <section>
+                            <h3>Commande de //annnée//</h3>
+                            <p>{{ $order->updated_at->diffForHumans() }}</p>
+                            <div class="books_list">
+                        @foreach ($order->books as $book)
+                            <div>
+                                <div class="book_around">
+                                    <img src="
+                                    @if ($book->img)
+                                    /{{$book->img}}
+                                    @else
+                                    {{ asset('../img/book_cover.jpg') }}
+                                    @endif
+                                    " alt="{{ $book->title }} cover" title="{{ $book->name }}" class="student-order-cover book_profil">
 
-                   // Ajouter les anciennes commandes ici! :D
+                                    <div class="book_info">
+                                        <p class="title">
+                                            {{ $book->title }}
+                                        </p>
+                                        <p class="info">
+                                            Price : {{ $book->school_price }}€
+                                        </p>
+                                        <p class="info">
+                                            Stock : {{ $book->stock }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                        </div>
+
+                        @if ($order->statu_id == 1)
+                            <p>Le commande n'avait pas été confirmée par {{ $user->name }}</p>
+
+                        @endif
+
+                        @if ($order->statu_id == 2)
+                            <p>Le commande n'avait pas été payée par {{ $user->name }}</p>
+                        @endif
+
+                        @if ($order->statu_id == 3)
+                            <p>Vous n'avez jamais rendu le Stoque Disponnible pour cette commande.</p>
+                        @endif
+
+                        @if ($order->statu_id == 4)
+                           <p>Le commande à été payée par {{ $user->name }}, mais il n'es jamais venu la récupérée.</p>
+                        @endif
+
+                        @if ($order->statu_id == 5)
+                            <p>La commande de cette année à été cloturée</p>
+                        @endif
+
+                        </section>
+                   @endforeach
+
+
+
+
+
+
                 </section>
 
         </div>

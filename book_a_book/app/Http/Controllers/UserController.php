@@ -14,6 +14,10 @@ use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Hash;
 
+
+use Image;
+
+
 class UserController extends Controller
 {
 
@@ -146,13 +150,25 @@ class UserController extends Controller
 
         if($request->file('profil') && $request->file('profil')->isValid()){
 
-            $fileName = urlencode($request->profil->getClientOriginalName());
-            $fileNameFull = time() . '-' . $fileName;
-            $path = 'img/profil/' . $fileNameFull;
-            $request->profil->move('img/profil', $fileNameFull);
+            // $fileName = urlencode($request->profil->getClientOriginalName());
+            // $fileNameFull = time() . '-' . $fileName;
+            // $path = 'img/profil/' . $fileNameFull;
+            // $request->profil->move('img/profil', $fileNameFull);
 
 
-            Auth::user() -> img = $path;
+            // Auth::user() -> img = $path;
+
+            $img = Image::make($request->profil)->resize(null, 100, function ($constraint) {
+                $constraint->aspectRatio();
+             });
+             $imgPath = 'img/profil' . time() . '-' . urlencode($request->profil->getClientOriginalName());
+             $img->save($imgPath, 70);
+
+
+             Auth::user()  -> img = $imgPath;
+
+
+
         }
 
         if($request->be){

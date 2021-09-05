@@ -25,7 +25,8 @@ class StudentsController extends Controller
 
         $inProcess = Order::where('statu_id', '<>', '1')->where('statu_id', '<>', '5')->count();
 
-        $oldOrders = Order::withoutGlobalScope(ArchivedScope::class)->where('user_id', $user->id)->with('books')->get();
+        //$oldOrders = Order::withoutGlobalScope(ArchivedScope::class)->where('user_id', $user->id)->with('books')->get();
+        $oldOrders = Order::withoutGlobalScope('pastOrders')->where('user_id', $user->id)->where('archived', true)->with('books')->get();
 
 
         $user->load('orders', 'orders.books', 'orders.statu');
@@ -46,8 +47,7 @@ class StudentsController extends Controller
 
         //$user_order = User::where('id', $user->id)->with('orders')->first();
 
-        dd(Order::withoutGlobalScope(ArchivedScope::class)->get());
-
+        //dd(Order::withoutGlobalScope('pastOrders')->get());
         return view('admin.student', compact('user', 'inProcess', 'oldOrders'));
     }
 
