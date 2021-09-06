@@ -48,7 +48,7 @@ Crer un livre :
 
 
                     <label for="isbn" class="isbn">ISBN</label>
-                    <input type="text" name="isbn" id="title" class="form-control " placeholder="ex : je sais pas à quoi ça resemble" value="{{ old('isbn') }}">
+                    <input type="text" name="isbn" id="isbn" class="form-control " placeholder="ex : je sais pas à quoi ça resemble" value="{{ old('isbn') }}">
                     @error('isbn')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
@@ -102,7 +102,7 @@ Crer un livre :
                     @enderror
 
                     <label for="stock">Nombre de livre en Stoque</label>
-                    <input type="text" name="stock" id="stock" class="form-control" class="stock" placeholder="ex : 3" value="{{ old('stock') }}">
+                    <input type="text" name="stock" id="stock" class="form-control"  placeholder="ex : 3" value="{{ old('stock') }}">
                     @error('stock')
                         <div class="alert alert-danger">{{ $message }}</div>
                     @enderror
@@ -113,7 +113,7 @@ Crer un livre :
 
             </div>
                 <div class="form_btn-box">
-                    <input type="submit" name="" id="" class="hcta cta form_cta book_cta" value="Sauvgarder">
+                    <input type="submit" class="hcta cta form_cta book_cta" value="Sauvgarder">
                 </div>
 
         </form>

@@ -64,29 +64,29 @@
 
                     <div class="ordered_by">
                         @foreach($book->orders as $order)
+                            {{-- @if($order->statu->id < 4) --}}
+                                <div class="buyerprofil_box">
+                                    <a href="http://localhost:8887/admin/student/{{$order->user->id}}">
+                                        <img src="
+                                        @if ($order->user->img)
+                                        /{{$order->user->img}}
+                                        @else
+                                                {{'https://eu.ui-avatars.com/api/?name=' . urlencode($order->user->name) . '&size=120&background=aa0202&color=ffffff'}}
+                                        @endif
+                                        " alt="" class="buyer_pp">
+                                    </a>
 
-                            <div class="buyerprofil_box">
-                                <a href="http://localhost:8887/admin/student/{{$order->user->id}}">
-                                    <img src="
-                                    @if ($order->user->img)
-                                    /{{$order->user->img}}
-                                    @else
-                                            {{'https://eu.ui-avatars.com/api/?name=' . urlencode($order->user->name) . '&size=120&background=aa0202&color=ffffff'}}
-                                    @endif
-                                    " alt="" class="buyer_pp">
-                                </a>
-
-                                <div class="buyerprofil_toggle">
-                                    <p>{{ $order->user->name }}</p>
-                                    <p class="group">{{ $order->user->group }}</p>
-                                    @if ($order->statu->id == 3)
-                                        <p class="good">payer</p>
-                                    @else
-                                        <p class="alert">Impayer</p>
-                                    @endif
+                                    <div class="buyerprofil_toggle">
+                                        <p>{{ $order->user->name }}</p>
+                                        <p class="group">{{ $order->user->group }}</p>
+                                        @if ($order->statu->id == 3)
+                                            <p class="good">payer</p>
+                                        @else
+                                            <p class="alert">Impayer</p>
+                                        @endif
+                                    </div>
                                 </div>
-
-                            </div>
+                            {{-- @endif --}}
 
                     @endforeach
 

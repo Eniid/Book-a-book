@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 
 
 //* Student
-    Route::get('/', [StudentsIndexController::class, 'index'])->middleware('orderd')->name('student_home') ;
+    Route::get('/', [StudentsIndexController::class, 'index'])->middleware('auth')->middleware('orderd')->name('student_home') ;
     Route::post('/plus', [StudentsIndexController::class, 'plus'])->middleware('auth');
     Route::post('/moins', [StudentsIndexController::class, 'moins'])->middleware('auth');
 
@@ -31,7 +31,7 @@ use Illuminate\Support\Facades\Route;
     Route::post('/del', [StudentsIndexController::class, 'del'])->middleware('auth');
     Route::post('/valid', [StudentsIndexController::class, 'valid'])->middleware('auth');
 
-    Route::get('/commande-en-cours', [StudentsIndexController::class, 'commande'])->middleware('auth')->name('student_order');
+    Route::get('/commande-en-cours', [StudentsIndexController::class, 'commande'])->middleware('noorderd')->name('student_order');
 
 
 

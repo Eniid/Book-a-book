@@ -27,7 +27,7 @@ Editer livre :
                         @else
                             {{ asset('../img/book_cover.jpg') }}
                         @endif
-                        " title="{{ $book->name }}" class="student-order-cover">
+                        " title="{{ $book->name }}" alt="" class="student-order-cover">
                     <input type="file" name="img" id="img" class="cover_edit" >
                     <img src="{{ asset('../img/edit_black.svg') }}" alt="" class="edit_pic">
                     </div>
@@ -44,7 +44,7 @@ Editer livre :
                         <input type="text" name="edition" id="edition" class="form-control " value="{{$book->edition}}">
 
                         <label for="isbn" class="isbn">ISBN</label>
-                        <input type="text" name="isbn" id="title" class="form-control " value="{{$book->isbn}}">
+                        <input type="text" name="isbn" id="isbn" class="form-control " value="{{$book->isbn}}">
 
                         <label for="link" class="isbn">Liens vers Amazone</label>
                         <input type="text" name="link" id="link" class="form-control " value="{{$book->link}}">
@@ -81,7 +81,7 @@ Editer livre :
                         <input type="number" name="store_price" id="store_price" class="form-control" value="{{$book->store_price}}">
 
                         <label for="stock">Nombre de livre en Stoque</label>
-                        <input type="number" name="stock" id="stock" class="form-control" class="stock" value="{{$book->stock}}">
+                        <input type="number" name="stock" id="stock" class="form-control"  value="{{$book->stock}}">
 
                         <input type="hidden" value="{{$book->id}}" name="book_id">
 
@@ -91,7 +91,7 @@ Editer livre :
 
                 </div>
                 <div class="form_btn-box">
-                    <input type="submit" name="" id="" class="hcta cta form_cta book_cta" value="Sauvgarder">
+                    <input type="submit" class="hcta cta form_cta book_cta" value="Sauvgarder">
                 </div>
 
             </form>
@@ -136,7 +136,6 @@ Editer livre :
 
 
 
-
-    </main>
+    </div>
 
 @endsection

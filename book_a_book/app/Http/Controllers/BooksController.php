@@ -89,6 +89,15 @@ class BooksController extends Controller
             $validations['prof']='min:4|max:20';
         }
 
+        // if($request->school_price){
+        //     $validations['school_price']='integer';
+        // }
+
+
+
+
+
+
         if(request('title')){
             $book -> title = request('title');
         };
@@ -108,12 +117,15 @@ class BooksController extends Controller
 
 
         if(request('img')){
-            $fileName = urlencode($request->img->getClientOriginalName());
-            $fileNameFull = time() . '-' . $fileName;
-            $path = 'img/cover/' . $fileNameFull;
-            $request->img->move('img/cover', $fileNameFull);
 
-            $book -> img = $path;
+            $img = Image::make($request->img)->resize(null, 250, function ($constraint) {
+                $constraint->aspectRatio();
+             });
+             $imgPath = 'img/cover' . time() . '-' . urlencode($request->img->getClientOriginalName());
+             $img->save($imgPath, 70);
+
+             $book -> img = $imgPath;
+
         };
 
         if(request('prof')){
@@ -175,7 +187,7 @@ class BooksController extends Controller
 
         $book = new Book(request()->validate(
             [
-                'img' => 'required',
+
                 'title' => 'required|min:4',
                 'auth' => 'required|min:4',
                 'edition' => 'required|min:4',
@@ -199,15 +211,19 @@ class BooksController extends Controller
 
 
 
-        $img = Image::make($request->img)->resize(null, 250, function ($constraint) {
-            $constraint->aspectRatio();
-         });
-         $imgPath = 'img/cover' . time() . '-' . urlencode($request->img->getClientOriginalName());
-         $img->save($imgPath, 70);
+
+         if(request('img')){
+            $img = Image::make($request->img)->resize(null, 250, function ($constraint) {
+                $constraint->aspectRatio();
+             });
+             $imgPath = 'img/cover' . time() . '-' . urlencode($request->img->getClientOriginalName());
+             $img->save($imgPath, 70);
+
+             $book -> img = $imgPath;
+        };
 
 
 
-        $book -> img = $imgPath;
 
         $book -> title = request('title');
         $book -> author = request('auth');

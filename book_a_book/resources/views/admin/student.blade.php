@@ -17,7 +17,7 @@
 
                 @csrf
 
-                <div class="profil-edit_box_avatar" for="profil">
+                <div class="profil-edit_box_avatar">
                     <img src="
                             @if ($user->img)
                             /{{ $user->img }}
@@ -297,7 +297,7 @@
                 </section>
 
         </div>
-    </form>
+    </div>
 </div>
 
 
